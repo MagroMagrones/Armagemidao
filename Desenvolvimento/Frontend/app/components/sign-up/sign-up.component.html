@@ -1,0 +1,62 @@
+<app-main
+  [title]="'Cadastro'"
+  [subtitle]="'Preencha os campos a seguir para entrar em nosso sistema'"
+>
+  <div class="row">
+    <form class="col-12 col-md-6 offset-md-3 ">
+      <div class="form-group">
+        <label for="inpEmail">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="inpEmail"
+          placeholder="bbwatch@email.com"
+          [(ngModel)]="email"
+          name="inpEmail"
+        />
+      </div>
+      <div class="form-group">
+        <label for="inpPass1">Senha</label>
+        <input
+          type="password"
+          class="form-control"
+          id="inpPass1"
+          placeholder="Password"
+          [(ngModel)]="pass1"
+          name="inpPass1"
+        />
+      </div>
+      <div class="form-group">
+        <label for="inpPass2">Confirme a senha</label>
+        <input
+          type="password"
+          class="form-control"
+          id="inpPass2"
+          placeholder="Password"
+          [(ngModel)]="pass2"
+          name="inpPass2"
+        />
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 mt-2">
+          <button
+            type="submit"
+            class="btn btn-primary btn-block mt-2"
+            (click)="signUp(email, pass1, pass2)"
+          >
+            Cadastrar
+          </button>
+        </div>
+        <div class="col-12 col-md-6 mt-2">
+          <button
+            type="submit"
+            class="btn btn-danger btn-block mt-2"
+            routerLink="/sign-in"
+          >
+            Já sou cadastrado
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</app-main>

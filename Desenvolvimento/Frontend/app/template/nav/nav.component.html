@@ -1,0 +1,20 @@
+<aside class="menu-area">
+  <nav class="menu">
+    <a *ngIf="!isLoggedIn" routerLink="/sign-in"
+      ><i class="fas fa-sign-in-alt"></i> Entrar</a
+    >
+    <a *ngIf="!isLoggedIn" routerLink="/sign-up"
+      ><i class="fas fa-sign-in-alt"></i> Cadastro</a
+    >
+    <a *ngIf="isLoggedIn" (click)="signOut()"
+      ><i class="fas fa-sign-out-alt"></i> Sair</a
+    >
+
+    <a *ngIf="isLoggedIn" routerLink="/home"
+      ><i class="fa fa-home"></i> Início</a
+    >
+    <a *ngIf="isLoggedIn" routerLink="/user">
+      <i class="fa fa-users"></i> Cadastro</a
+    >
+  </nav>
+</aside>

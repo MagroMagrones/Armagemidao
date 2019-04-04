@@ -1,0 +1,14 @@
+main > div {
+  background-color: #fff;
+  box-shadow: opx opx 15px #0004;
+  min-height: 100vh;
+  height: auto;
+}
+
+main {
+  min-height: 100vh;
+}
+app-header,
+main {
+  width: 100%;
+}

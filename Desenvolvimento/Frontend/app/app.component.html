@@ -1,0 +1,17 @@
+<div class="app">
+  <div class="d-flex flex-column flex-md-row">
+    <div class="d-inline-column side">
+      <app-logo class="logo"></app-logo>
+      <app-nav class="aside flex-grow-1"></app-nav>
+    </div>
+    <div class="flex-grow-1">
+      <div class="d-inline-column">
+        <router-outlet class="main flex-grow-1"></router-outlet>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <app-footer class="footer"></app-footer>
+  </div>
+</div>
