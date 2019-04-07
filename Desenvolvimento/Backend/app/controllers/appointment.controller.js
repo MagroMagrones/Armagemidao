@@ -1,8 +1,8 @@
-appointmentModel = require('../models/appointment.model')
+const appointmentModel = require('../models/appointment.model')
 
 module.exports = {
   getAll: async () => {
-    appointments = await appointmentModel
+    const appointments = await appointmentModel
       .findAll()
       .then()
       .catch(err => console.log(err))

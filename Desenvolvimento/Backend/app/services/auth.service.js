@@ -25,7 +25,7 @@ module.exports = {
           console.log(err)
           return
         }
-        cognitoUser = result.user
+        const cognitoUser = result.user
         console.log('user name is ' + cognitoUser.getUsername())
         return resolve('user name is ' + cognitoUser.getUsername())
       })
@@ -81,7 +81,7 @@ module.exports = {
       },
       (error, response, body) => {
         if (!error && response.statusCode === 200) {
-          pems = {}
+          const pems = {}
           var keys = body['keys']
           for (var i = 0; i < keys.length; i++) {
             //Convert each key to PEM
@@ -90,8 +90,8 @@ module.exports = {
             var exponent = keys[i].e
             var key_type = keys[i].kty
             var jwk = { kty: key_type, n: modulus, e: exponent }
-            var pem = jwkToPem(jwk)
-            pems[key_id] = pem
+            var jwkpem = jwkToPem(jwk)
+            pems[key_id] = jwkpem
           }
           //validate the token
           var decodedJwt = jwt.decode(token, { complete: true })

@@ -1,8 +1,8 @@
-tutorialModel = require('../models/tutorial.model')
+const tutorialModel = require('../models/tutorial.model')
 
 module.exports = {
   getAll: async () => {
-    tutorials = await tutorialModel
+    const tutorials = await tutorialModel
       .findAll()
       .then()
       .catch(err => console.log(err))

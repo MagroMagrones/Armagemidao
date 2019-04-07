@@ -1,8 +1,8 @@
-medicineDoseModel = require('../models/medicineDose.model')
+const medicineDoseModel = require('../models/medicineDose.model')
 
 module.exports = {
   getAll: async () => {
-    medicineDoses = await medicineDoseModel
+    const medicineDoses = await medicineDoseModel
       .findAll()
       .then()
       .catch(err => console.log(err))

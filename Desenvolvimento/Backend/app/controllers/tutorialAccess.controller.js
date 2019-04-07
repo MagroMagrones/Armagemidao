@@ -1,8 +1,8 @@
-tutorialAccessModel = require('../models/tutorialAccess.model')
+const tutorialAccessModel = require('../models/tutorialAccess.model')
 
 module.exports = {
   getAll: async () => {
-    tutorialAccesses = await tutorialAccessModel
+    const tutorialAccesses = await tutorialAccessModel
       .findAll()
       .then()
       .catch(err => console.log(err))

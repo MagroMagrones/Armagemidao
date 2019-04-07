@@ -1,8 +1,8 @@
-permissionProfileModel = require('../models/permissionProfile.model')
+const permissionProfileModel = require('../models/permissionProfile.model')
 
 module.exports = {
   getAll: async () => {
-    permissionProfiles = await permissionProfileModel
+    const permissionProfiles = await permissionProfileModel
       .findAll()
       .then()
       .catch(err => console.log(err))

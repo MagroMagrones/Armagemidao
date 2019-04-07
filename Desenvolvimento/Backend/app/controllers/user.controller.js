@@ -1,8 +1,8 @@
-userModel = require('../models/user.model')
+const userModel = require('../models/user.model')
 
 module.exports = {
   getAll: async () => {
-    users = await userModel
+    const users = await userModel
       .findAll()
       .then()
       .catch(err => console.log(err))
@@ -11,7 +11,7 @@ module.exports = {
     else return []
   },
   get: async payload => {
-    user = await userModel
+    const user = await userModel
       .findAll({
         where: {
           ...payload
@@ -24,7 +24,7 @@ module.exports = {
     else return []
   },
   set: async data => {
-    resCreateUser = await userModel
+    const resCreateUser = await userModel
       .create(data)
       .then()
       .catch(err => {
@@ -39,7 +39,7 @@ module.exports = {
       }
   },
   update: async (id, payload) => {
-    resUpdateUser = await userModel
+    const resUpdateUser = await userModel
       .update({ ...payload }, { where: { id: id } })
       .then()
       .catch(err => {

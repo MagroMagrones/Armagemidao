@@ -1,8 +1,8 @@
-notificationModel = require('../models/notification.model')
+const notificationModel = require('../models/notification.model')
 
 module.exports = {
   getAll: async () => {
-    notifications = await notificationModel
+    const notifications = await notificationModel
       .findAll()
       .then()
       .catch(err => console.log(err))

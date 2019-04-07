@@ -1,8 +1,8 @@
-vaccineApplication = require('../models/vaccineApplication.model')
+const vaccineApplication = require('../models/vaccineApplication.model')
 
 module.exports = {
   getAll: async () => {
-    vaccineApplications = await vaccineApplication
+    const vaccineApplications = await vaccineApplication
       .findAll()
       .then()
       .catch(err => console.log(err))

@@ -1,8 +1,8 @@
-symptomModel = require('../models/symptom.model')
+const symptomModel = require('../models/symptom.model')
 
 module.exports = {
   getAll: async () => {
-    symptoms = await symptomModel
+    const symptoms = await symptomModel
       .findAll()
       .then()
       .catch(err => console.log(err))

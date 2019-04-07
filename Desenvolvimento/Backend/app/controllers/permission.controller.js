@@ -1,8 +1,8 @@
-permissionModel = require('../models/permission.model')
+const permissionModel = require('../models/permission.model')
 
 module.exports = {
   getAll: async () => {
-    permissions = await permissionModel
+    const permissions = await permissionModel
       .findAll()
       .then()
       .catch(err => console.log(err))

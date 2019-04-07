@@ -1,8 +1,8 @@
-boundModel = require('../models/bound.model')
+const boundModel = require('../models/bound.model')
 
 module.exports = {
   getAll: async () => {
-    bounds = await boundModel
+    const bounds = await boundModel
       .findAll()
       .then()
       .catch(err => console.log(err))
