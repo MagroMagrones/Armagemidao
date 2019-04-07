@@ -1,8 +1,8 @@
-profileModel = require('../models/profile.model')
+const profileModel = require('../models/profile.model')
 
 module.exports = {
   getAll: async () => {
-    profiles = await profileModel
+    const profiles = await profileModel
       .findAll()
       .then()
       .catch(err => console.log(err))

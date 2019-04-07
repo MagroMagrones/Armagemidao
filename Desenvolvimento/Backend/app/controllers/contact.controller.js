@@ -1,8 +1,8 @@
-contactModel = require('../models/contact.model')
+const contactModel = require('../models/contact.model')
 
 module.exports = {
   getAll: async () => {
-    contacts = await contactModel
+    const contacts = await contactModel
       .findAll()
       .then()
       .catch(err => console.log(err))

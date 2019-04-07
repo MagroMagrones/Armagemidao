@@ -1,8 +1,8 @@
-examModel = require('../models/exam.model')
+const examModel = require('../models/exam.model')
 
 module.exports = {
   getAll: async () => {
-    exams = await examModel
+    const exams = await examModel
       .findAll()
       .then()
       .catch(err => console.log(err))

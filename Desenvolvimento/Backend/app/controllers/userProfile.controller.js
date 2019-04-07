@@ -1,8 +1,8 @@
-userProfileModel = require('../models/userProfile.model')
+const userProfileModel = require('../models/userProfile.model')
 
 module.exports = {
   getAll: async () => {
-    usersProfile = await userProfileModel
+    const usersProfile = await userProfileModel
       .findAll()
       .then()
       .catch(err => console.log(err))

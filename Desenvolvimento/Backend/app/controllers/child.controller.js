@@ -1,8 +1,8 @@
-childModel = require('../models/child.model')
+const childModel = require('../models/child.model')
 
 module.exports = {
   getAll: async () => {
-    children = await childModel
+    const children = await childModel
       .findAll()
       .then()
       .catch(err => console.log(err))
