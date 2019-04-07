@@ -17,4 +17,5 @@ module.exports = app => {
   require('./userProfile.route')(app)
   require('./vaccine.route')(app)
   require('./vaccineApplication.route')(app)
+  require('./auth.route')(app)
 }

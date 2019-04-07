@@ -10,11 +10,11 @@ module.exports = {
     if (users.length > 0) return users
     else return []
   },
-  get: async id => {
+  get: async payload => {
     user = await userModel
       .findAll({
         where: {
-          id: id
+          ...payload
         }
       })
       .then()
@@ -38,11 +38,7 @@ module.exports = {
         id: resCreateUser.dataValues.id
       }
   },
-  update: async (id, data) => {
-    let payload = {}
-    if (data.nome) payload.nome = data.nome
-    if (data.email) payload.email = data.email
-
+  update: async (id, payload) => {
     resUpdateUser = await userModel
       .update({ ...payload }, { where: { id: id } })
       .then()
@@ -50,7 +46,6 @@ module.exports = {
         console.log(err)
       })
 
-    console.log(resUpdateUser)
-    return { message: `Registros alterados: ${resUpdateUser}` }
+    return { message: `Registro alterado com sucesso` }
   }
 }

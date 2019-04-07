@@ -9,7 +9,6 @@ app.use(bodyParser.json())
 require('./app/routes')(app)
 require('./app/controllers')
 require('./app/services')
-require('./config/schema')
 
 db.authenticate()
   .then(() => {

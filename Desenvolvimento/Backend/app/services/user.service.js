@@ -1,6 +1,9 @@
-const checkSet = require('../helpers/checkSetData')
-const checkUpdate = require('../helpers/checkUpdateData')
-const checkGet = require('../helpers/checkGetData')
+const {
+  checkSet,
+  checkUpdate,
+  checkGet
+} = require('../helpers/checkDataFromRoute')
+
 module.exports = {
   getAll: async () => {
     let res = await userController.getAll()
@@ -9,9 +12,8 @@ module.exports = {
   get: async data => {
     let checkedData = checkGet(data, 'nome', 'email', 'id')
     if (checkedData.errMessage) return checkedData.errMessage
-    // if (!data.id || isNaN(data.id)) return { err: 'Id inválido' }
-    let id = data.id
-    let res = await userController.get(id)
+    let payload = checkedData.payload
+    let res = await userController.get(payload)
     return res
   },
   set: async data => {
@@ -24,11 +26,9 @@ module.exports = {
   update: async data => {
     let checkedData = checkUpdate(data.data, data.id, 'nome', 'email')
     if (checkedData.errMessage) return checkedData.errMessage
-
-    // if (!data.id) return { err: 'id é obrigatório' }
-    // if (!data.data) return { err: 'update inválido' }
-
-    let res = await userController.update(data.id, data.data)
+    let id = checkedData.id
+    let payload = checkedData.payload
+    let res = await userController.update(id, payload)
     return res
   }
 }
