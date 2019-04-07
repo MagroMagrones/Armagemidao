@@ -1,20 +1,20 @@
 <aside class="menu-area">
   <nav class="menu">
-    <a *ngIf="!isLoggedIn" routerLink="/sign-in"
+    <a *ngIf="!(isLoggedIn | async)" routerLink="/sign-in"
       ><i class="fas fa-sign-in-alt"></i> Entrar</a
     >
-    <a *ngIf="!isLoggedIn" routerLink="/sign-up"
+    <a *ngIf="!(isLoggedIn | async)" routerLink="/sign-up"
       ><i class="fas fa-sign-in-alt"></i> Cadastro</a
     >
-    <a *ngIf="isLoggedIn" (click)="signOut()"
+    <a *ngIf="(isLoggedIn | async)" (click)="signOut()"
       ><i class="fas fa-sign-out-alt"></i> Sair</a
     >
 
-    <a *ngIf="isLoggedIn" routerLink="/home"
+    <a *ngIf="(isLoggedIn | async)" routerLink="/home"
       ><i class="fa fa-home"></i> Início</a
     >
-    <a *ngIf="isLoggedIn" routerLink="/user">
-      <i class="fa fa-users"></i> Cadastro</a
+    <a *ngIf="(isLoggedIn | async)" [routerLink]="['/user']"
+      ><i class="fas fa-user"></i> Usuários</a
     >
   </nav>
 </aside>

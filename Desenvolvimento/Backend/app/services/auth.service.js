@@ -27,7 +27,7 @@ module.exports = {
         }
         const cognitoUser = result.user
         console.log('user name is ' + cognitoUser.getUsername())
-        return resolve('user name is ' + cognitoUser.getUsername())
+        return resolve({ mess: 'user name is ' + cognitoUser.getUsername() })
       })
     })
   },

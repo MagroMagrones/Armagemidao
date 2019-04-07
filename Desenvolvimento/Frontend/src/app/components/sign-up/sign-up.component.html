@@ -36,6 +36,7 @@
           [(ngModel)]="pass2"
           name="inpPass2"
         />
+        <p *ngIf="pass1 !== pass2">As senhas não correspondem</p>
       </div>
       <div class="row">
         <div class="col-12 col-md-6 mt-2">
