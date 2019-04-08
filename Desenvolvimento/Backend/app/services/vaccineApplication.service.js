@@ -1,3 +1,4 @@
+const vaccineApplicationController = require('../controllers/vaccineApplication.controller')
 module.exports = {
   getAll: async () => {
     let res = await vaccineApplicationController.getAll()

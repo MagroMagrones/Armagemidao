@@ -1,3 +1,4 @@
+const profileController = require('../controllers/profile.controller')
 module.exports = {
   getAll: async () => {
     let res = await profileController.getAll()

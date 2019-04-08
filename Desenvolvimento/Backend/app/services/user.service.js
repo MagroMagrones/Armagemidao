@@ -4,6 +4,8 @@ const {
   checkGet
 } = require('../helpers/checkDataFromRoute')
 
+const userController = require('../controllers/user.controller')
+
 module.exports = {
   getAll: async () => {
     let res = await userController.getAll()
@@ -17,7 +19,7 @@ module.exports = {
     return res
   },
   set: async data => {
-    let checkedData = checkSet(data, 'nome', 'email')
+    let checkedData = checkSet(data, 'email')
     if (checkedData.errMessage) return checkedData.errMessage
     let payload = checkedData.payload
     let res = await userController.set(payload)

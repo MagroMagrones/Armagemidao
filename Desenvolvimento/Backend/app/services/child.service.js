@@ -1,3 +1,4 @@
+const childController = require('../controllers/child.controller')
 module.exports = {
   getAll: async () => {
     let res = await childController.getAll()

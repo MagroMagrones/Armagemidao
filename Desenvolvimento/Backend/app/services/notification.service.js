@@ -1,3 +1,4 @@
+const notificationController = require('../controllers/notification.controller')
 module.exports = {
   getAll: async () => {
     let res = await notificationController.getAll()

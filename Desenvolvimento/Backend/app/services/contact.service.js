@@ -1,3 +1,4 @@
+const contactController = require('../controllers/contact.controller')
 module.exports = {
   getAll: async () => {
     let res = await contactController.getAll()
