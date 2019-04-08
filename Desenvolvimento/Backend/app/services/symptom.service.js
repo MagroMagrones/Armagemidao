@@ -1,3 +1,4 @@
+const symptomController = require('../controllers/symptom.controller')
 module.exports = {
   getAll: async () => {
     let res = await symptomController.getAll()

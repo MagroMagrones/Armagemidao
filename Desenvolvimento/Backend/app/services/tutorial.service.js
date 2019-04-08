@@ -1,3 +1,4 @@
+const tutorialController = require('../controllers/tutorial.controller')
 module.exports = {
   getAll: async () => {
     let res = await tutorialController.getAll()

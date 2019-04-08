@@ -4,32 +4,38 @@ const AWS = require('aws-sdk')
 const request = require('request')
 const jwkToPem = require('jwk-to-pem')
 const jwt = require('jsonwebtoken')
+const userService = require('../services/user.service')
 global.fetch = require('node-fetch')
+const cognitoConf = require('../../config/cognito')
+console.log(cognitoConf)
 
 const poolData = {
-  UserPoolId: 'us-east-1_WFMZyDi7f', // Your user pool id here
-  ClientId: '1fshulpcjo2hovbdfqc0i3l1u' // Your client id here
+  UserPoolId: cognitoConf.UserPoolId,
+  ClientId: cognitoConf.ClientId
 }
-const pool_region = 'us-east-1'
+const pool_region = cognitoConf.pool_region
 
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData)
 
 module.exports = {
-  RegisterUser: data => {
+  RegisterUser: async data => {
     console.log('authService - register')
     const { email, password } = data
     var attributeList = []
-    return new Promise((resolve, reject) => {
-      userPool.signUp(email, password, attributeList, null, (err, result) => {
-        if (err) {
-          console.log(err)
-          return
-        }
-        const cognitoUser = result.user
-        console.log('user name is ' + cognitoUser.getUsername())
-        return resolve({ mess: 'user name is ' + cognitoUser.getUsername() })
+    let user = await userService.set({ email })
+    if (user.id)
+      return new Promise((resolve, reject) => {
+        userPool.signUp(email, password, attributeList, null, (err, result) => {
+          if (err) {
+            console.log(err)
+            return
+          }
+          const cognitoUser = result.user
+          console.log('user name is ' + cognitoUser.getUsername())
+          return resolve({ mess: 'user name is ' + cognitoUser.getUsername() })
+        })
       })
-    })
+    else return { err: 'erro ao registrar usuário' }
   },
   Login: data => {
     console.log('authService - login')
@@ -178,5 +184,50 @@ module.exports = {
         console.log(err)
       }
     })
+  },
+  ForgotenPassword: data => {
+    const { email } = data
+    const userData = {
+      Username: email,
+      Pool: userPool
+    }
+
+    cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData)
+    cognitoUser.forgotPassword({
+      onSuccess: function(result) {
+        console.log('call result: ' + result)
+      },
+      onFailure: function(err) {
+        console.log(err)
+      },
+      inputVerificationCode() {
+        // var verificationCode = prompt('Please input verification code ', '')
+        // var newPassword = prompt('Enter new password ', '')
+        // cognitoUser.confirmPassword(verificationCode, newPassword, this)
+      }
+    })
+  },
+  confirmPassword: data => {
+    const { verificationCode, newPassword, email } = data
+    const userData = {
+      Username: email,
+      Pool: userPool
+    }
+
+    cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData)
+    cognitoUser.confirmPassword(verificationCode, newPassword, this)
+  },
+  SignUserOut: data => {
+    const { email } = data
+    const userData = {
+      Username: email,
+      Pool: userPool
+    }
+
+    cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData)
+
+    if (cognitoUser != null) {
+      cognitoUser.signOut()
+    }
   }
 }

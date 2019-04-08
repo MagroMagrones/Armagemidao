@@ -1,3 +1,4 @@
+const medicineDoseController = require('../controllers/medicineDose.controller')
 module.exports = {
   getAll: async () => {
     let res = await medicineDoseController.getAll()

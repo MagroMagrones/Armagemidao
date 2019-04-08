@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core'
-import { AuthService } from 'src/app/services/auth.service'
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,20 +8,24 @@ import { AuthService } from 'src/app/services/auth.service'
 })
 export class SignInComponent implements OnInit {
   constructor(private authService: AuthService) {}
-  email = ''
-  pass = ''
+  email = '';
+  pass = '';
 
   ngOnInit() {}
 
   signIn(email, pass) {
     if (email.length <= 0 || pass.length <= 0) {
-      console.log('required')
-      return
+      console.log('required');
+      return;
     }
-    let data = { email: email, password: pass }
-    this.authService.signIn(data)
+    const data = { email: email, password: pass };
+    this.authService.signIn(data);
   }
   resetPassword(email) {
-    this.authService.resetPassword(email)
+    console.log('reset');
+
+    console.log({ email });
+
+    this.authService.resetPassword({ email });
   }
 }

@@ -1,3 +1,4 @@
+const boundController = require('../controllers/bound.controller')
 module.exports = {
   getAll: async () => {
     let res = await boundController.getAll()

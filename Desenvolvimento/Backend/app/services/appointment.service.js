@@ -1,3 +1,5 @@
+const appointmentController = require('../controllers/appointment.controller')
+
 module.exports = {
   getAll: async () => {
     let res = await appointmentController.getAll()

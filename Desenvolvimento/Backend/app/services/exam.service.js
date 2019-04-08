@@ -1,3 +1,4 @@
+const examController = require('../controllers/exam.controller')
 module.exports = {
   getAll: async () => {
     let res = await examController.getAll()

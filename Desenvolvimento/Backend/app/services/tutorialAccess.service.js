@@ -1,3 +1,4 @@
+const tutorialAccessController = require('../controllers/tutorialAccess.controller')
 module.exports = {
   getAll: async () => {
     let res = await tutorialAccessController.getAll()

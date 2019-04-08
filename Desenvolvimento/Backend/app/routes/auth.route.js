@@ -20,6 +20,13 @@ module.exports = app => {
     console.log('\n[auth.routes.js] - change-pass')
     console.log(req.body)
 
-    res.send(await authService.ChangePassword(req.body))
+    res.send(await authService.ForgotenPassword(req.body))
+  })
+
+  app.post('/confirm-pass', async (req, res) => {
+    console.log('\n[auth.routes.js] - change-pass')
+    console.log(req.body)
+
+    res.send(await authService.confirmPassword(req.body))
   })
 }

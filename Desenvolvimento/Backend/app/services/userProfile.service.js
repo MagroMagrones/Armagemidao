@@ -1,3 +1,4 @@
+const userProfileController = require('../controllers/userProfile.controller')
 module.exports = {
   getAll: async () => {
     let res = await userProfileController.getAll()

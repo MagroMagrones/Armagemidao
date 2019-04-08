@@ -1,3 +1,4 @@
+const permissionController = require('../controllers/permission.controller')
 module.exports = {
   getAll: async () => {
     let res = await permissionController.getAll()
