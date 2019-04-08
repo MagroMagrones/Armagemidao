@@ -43,6 +43,7 @@ export class AuthService {
         res => {
           this.email = data.email;
           swal('enviamos um email para confirmar o seu cadastro');
+          this.router.navigate(['/sign-in']);
           resolve(res);
         },
         err => {
@@ -53,14 +54,21 @@ export class AuthService {
   }
   signOut() {
     console.log('[auth.service.ts] - signOut');
+    const data = { email: this.email };
     localStorage.removeItem('jwt');
     this.isLoginSubject.next(false);
     this.router.navigate(['/sign-in']);
+    return new Promise((resolve, reject) => {
+      this.http.post(`${this.url}/sign-out`, data).subscribe(
+        (res: any) => {},
+        err => {
+          console.log(err);
+        }
+      );
+    });
   }
   resetPassword(data) {
     console.log('[auth.service.ts] - resetPassword');
-    console.log(data);
-
     return new Promise((resolve, reject) => {
       this.http.post(`${this.url}/change-pass`, data).subscribe(
         res => {
