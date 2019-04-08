@@ -15,6 +15,10 @@ module.exports = app => {
 
     res.send(await authService.RegisterUser(req.body))
   })
+  app.post('/sign-out', async (req, res) => {
+    console.log('\n[auth.routes.js] - sign-up')
+    res.send(await authService.SignUserOut(req.body))
+  })
 
   app.post('/change-pass', async (req, res) => {
     console.log('\n[auth.routes.js] - change-pass')

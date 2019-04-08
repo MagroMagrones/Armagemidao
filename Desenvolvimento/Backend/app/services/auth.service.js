@@ -219,6 +219,7 @@ module.exports = {
   },
   SignUserOut: data => {
     const { email } = data
+
     const userData = {
       Username: email,
       Pool: userPool
@@ -229,5 +230,6 @@ module.exports = {
     if (cognitoUser != null) {
       cognitoUser.signOut()
     }
+    return { userSignedOut: true }
   }
 }
