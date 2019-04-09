@@ -20,6 +20,17 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
+import { RegisterChildComponent } from './components/child/register-child/register-child.component';
+import { ListChildrenComponent } from './components/child/list-children/list-children.component';
+import { ChildCardComponent } from './components/child/child-card/child-card.component';
+import { ChildProfileComponent } from './components/child/child-profile/child-profile.component';
+import { ListVaccinesComponent } from './components/vaccine/list-vaccines/list-vaccines.component';
+import { RegisterVaccineComponent } from './components/vaccine/register-vaccine/register-vaccine.component';
+import { ListMedicinesComponent } from './components/medicine/list-medicines/list-medicines.component';
+import { RegisterMedicineComponent } from './components/medicine/register-medicine/register-medicine.component';
+import { MedicineComponent } from './components/medicine/medicine/medicine.component';
+import { VaccineComponent } from './components/vaccine/vaccine/vaccine.component';
+import { ChildComponent } from './components/child/child/child.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +44,18 @@ import { NewPasswordComponent } from './components/new-password/new-password.com
     HomeComponent,
     SignInComponent,
     SignUpComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    RegisterChildComponent,
+    ListChildrenComponent,
+    ChildCardComponent,
+    ChildProfileComponent,
+    ListVaccinesComponent,
+    RegisterVaccineComponent,
+    ListMedicinesComponent,
+    RegisterMedicineComponent,
+    MedicineComponent,
+    VaccineComponent,
+    ChildComponent
   ],
   imports: [
     AppRoutingModule,

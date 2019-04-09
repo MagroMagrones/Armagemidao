@@ -1,0 +1,37 @@
+<div class="form mx-2">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="form-grup">
+        <label>Idade:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="inputName"
+          placeholder="Digite o nome"
+        />
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <label>E-Mail:</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="inputEmail"
+          placeholder="Digite o e-mail"
+        />
+      </div>
+    </div>
+  </div>
+
+  <hr />
+  <div class="row">
+    <div class="col-12 d-flex justify-content-end">
+      <button class="btn btn-secondary ml-2" (click)="this.clear()">
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>
