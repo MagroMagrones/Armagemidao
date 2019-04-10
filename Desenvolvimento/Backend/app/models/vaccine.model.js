@@ -1,16 +1,15 @@
 const Sequelize = require('sequelize')
 const db = require('../../config/db')
 
-const user = db.define(
+const vaccine = db.define(
   'Vacina',
   {
     nome: { type: Sequelize.STRING },
-    idade_inicio: { type: Sequelize.TINYINT },
-    idade_fim: { type: Sequelize.TINYINT },
-    dose_multipla: { type: Sequelize.TINYINT },
-    id_usuario: { type: Sequelize.INTEGER }
+    idade: { type: Sequelize.STRING },
+    dose: { type: Sequelize.TINYINT },
+    doencas_evitadas: { type: Sequelize.STRING }
   },
   { tableName: 'Vacina_teste' }
 )
 
-module.exports = user
+module.exports = vaccine

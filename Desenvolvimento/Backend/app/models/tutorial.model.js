@@ -1,14 +1,22 @@
 const Sequelize = require('sequelize')
 const db = require('../../config/db')
+const user = require('./user.model')
 
-const user = db.define(
+const tutorial = db.define(
   'Tutorial',
   {
     titulo: { type: Sequelize.STRING },
-    data_criacao: { type: Sequelize.DATE },
-    instrucoes: { type: Sequelize.STRING }
+    instrucoes: { type: Sequelize.STRING },
+    id_usuario: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: user,
+        key: 'id'
+      }
+    }
   },
   { tableName: 'Tutorial_teste' }
 )
 
-module.exports = user
+module.exports = tutorial

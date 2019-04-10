@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../../config/db')
 
-const user = db.define(
+const permission = db.define(
   'Permissao',
   {
     nome: { type: Sequelize.STRING }
@@ -9,4 +9,4 @@ const user = db.define(
   { tableName: 'Permissao_teste' }
 )
 
-module.exports = user
+module.exports = permission

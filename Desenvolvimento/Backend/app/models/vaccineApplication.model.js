@@ -1,16 +1,30 @@
 const Sequelize = require('sequelize')
 const db = require('../../config/db')
+const child = require('./child.model')
+const vaccine = require('./vaccine.model')
 
 const vaccineApplication = db.define(
-  'Aplicacao_Vacina',
+  'Vacina_Crianca',
   {
-    id_vacina: { type: Sequelize.INTEGER },
-    id_crianca: { type: Sequelize.INTEGER },
-    data_aplicacao: { type: Sequelize.DATE },
-    alergia: { type: Sequelize.INTEGER },
-    dose_numero: { type: Sequelize.INTEGER }
+    id_vacina: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: vaccine,
+        key: 'id'
+      }
+    },
+    id_crianca: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: child,
+        key: 'id'
+      }
+    },
+    data_aplicacao: { type: Sequelize.DATE }
   },
-  { tableName: 'Aplicacao_Vacina_teste' }
+  { tableName: 'Vacina_Crianca_teste' }
 )
 
 module.exports = vaccineApplication
