@@ -1,3 +1,23 @@
-<p>
-  list-vaccines works!
-</p>
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th>Idade:</th>
+      <th>Nome:</th>
+      <th>Dose</th>
+      <th>Doenças previnidas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let vaccine of vaccines">
+      <td>{{ vaccine.age }}</td>
+      <td>{{ vaccine.name }}</td>
+      <td>{{ vaccine.dose }}</td>
+      <td>{{ vaccine.diseases }}</td>
+      <td>
+        <button class="btn btn-danger ml-2" (click)="this.remove(vaccine)">
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

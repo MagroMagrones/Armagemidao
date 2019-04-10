@@ -5,9 +5,7 @@ const user = db.define(
   'Medicamento',
   {
     nome: { type: Sequelize.STRING },
-    data_cadastro: { type: Sequelize.DATE },
-    tipo: { type: Sequelize.STRING },
-    id_usuario: { type: Sequelize.INTEGER }
+    codigo: { type: Sequelize.STRING }
   },
   { tableName: 'Medicamento_teste' }
 )

@@ -1,26 +1,58 @@
 <div class="form mx-2">
   <div class="row">
     <div class="col-12 col-md-6">
+      <div class="form-group">
+        <label for="inputAge">Idade</label>
+        <select class="form-control" [(ngModel)]="inputAge">
+          <option value="1">Ao nascer</option>
+          <option value="2">1 mês</option>
+          <option value="3">2 meses</option>
+          <option value="4">4 meses</option>
+          <option value="5">6 meses</option>
+          <option value="6">9 meses</option>
+          <option value="7">12 meses</option>
+          <option value="8">15 meses</option>
+          <option value="9">4 - 6 anos</option>
+          <option value="10">10 anos</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
       <div class="form-grup">
-        <label>Idade:</label>
+        <label>Nome:</label>
         <input
           type="text"
           class="form-control"
-          name="name"
+          name="inputName"
           [(ngModel)]="inputName"
-          placeholder="Digite o nome"
+          placeholder="Nome da vacina"
         />
       </div>
     </div>
     <div class="col-12 col-md-6">
       <div class="form-group">
-        <label>E-Mail:</label>
+        <label>Dose:</label>
+        <select class="form-control" [(ngModel)]="inputDose">
+          <option value="1">1ª dose</option>
+          <option value="2">2ª dose</option>
+          <option value="3">3ª dose</option>
+          <option value="4">dose única</option>
+          <option value="5">dose inicial</option>
+          <option value="6">reforço</option>
+          <option value="7">1º reforço</option>
+          <option value="8">2º reforço</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <label>Doenças previnidas:</label>
         <input
-          type="email"
+          type="text"
           class="form-control"
-          name="email"
-          [(ngModel)]="inputEmail"
-          placeholder="Digite o e-mail"
+          name="inputDiseases"
+          [(ngModel)]="inputDiseases"
+          placeholder="Doenças previnidas"
         />
       </div>
     </div>
@@ -29,8 +61,11 @@
   <hr />
   <div class="row">
     <div class="col-12 d-flex justify-content-end">
-      <button class="btn btn-secondary ml-2" (click)="this.clear()">
-        Cancelar
+      <button
+        class="btn btn-primary"
+        (click)="this.save(inputAge, inputName, inputDose, inputDiseases)"
+      >
+        Salvar
       </button>
     </div>
   </div>

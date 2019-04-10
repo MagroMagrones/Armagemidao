@@ -18,4 +18,8 @@ module.exports = app => {
     console.log('\n[medicine.routes.js] - put')
     res.send(await medicineService.update(req.body))
   })
+  app.delete('/medicine/:id', async (req, res) => {
+    console.log('\n[medicine.routes.js] - delete')
+    res.send(await medicineService.delete(req.params))
+  })
 }
