@@ -11,7 +11,7 @@ const child = db.define(
     // alergias: { type: Sequelize.STRING },
     rg: { type: Sequelize.STRING },
     cor_pele: { type: Sequelize.STRING },
-    cor_cabelos: { type: Sequelize.STRING },
+    cor_olhos: { type: Sequelize.STRING },
     cor_cabelo: { type: Sequelize.STRING }
   },
   { tableName: 'Crianca_teste' }

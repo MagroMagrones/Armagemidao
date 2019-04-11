@@ -1,3 +1,29 @@
-<p>
-  child-card works!
-</p>
+<span class="card mb-2 shadow " [routerLink]="['/child', child.id]">
+  <span class="card-body">
+    <h5 class="card-title">{{ child.name }}</h5>
+    <div>
+      <span class="card-subtitle mb-2 text-muted">Genero: </span
+      ><span class="card-subtitle mb-2">{{ child.gender }}</span>
+    </div>
+    <div>
+      <span class="card-subtitle mb-2 text-muted">Sangue: </span
+      ><span class="card-subtitle mb-2">{{ child.blood }}</span>
+    </div>
+    <div>
+      <span class="card-subtitle mb-2 text-muted">Idade: </span
+      ><span class="card-subtitle mb-2">{{ child.age }}</span>
+    </div>
+    <div>
+      <span class="card-subtitle mb-2 text-muted">Pele: </span
+      ><span class="card-subtitle mb-2">{{ child.skin }}</span>
+    </div>
+    <div>
+      <span class="card-subtitle mb-2 text-muted">Olho: </span
+      ><span class="card-subtitle mb-2">{{ child.eyes }}</span>
+    </div>
+    <div>
+      <span class="card-subtitle mb-2 text-muted">Cabelo: </span
+      ><span class="card-subtitle mb-2">{{ child.hair }}</span>
+    </div>
+  </span>
+</span>

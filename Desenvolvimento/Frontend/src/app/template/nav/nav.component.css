@@ -1,5 +1,6 @@
 aside.menu-area {
   background-color: var(--bg-dark);
+  min-width: 286px;
 }
 aside {
   min-height: 100%;

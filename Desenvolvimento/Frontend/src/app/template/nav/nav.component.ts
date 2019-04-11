@@ -9,8 +9,13 @@ import { Observable } from 'rxjs'
 })
 export class NavComponent implements OnInit {
   isLoggedIn: Observable<boolean>
+  isDoctor: Observable<boolean>
+  isAdm: Observable<boolean>
+
   constructor(private authService: AuthService) {
     this.isLoggedIn = this.authService.isAuth()
+    this.isDoctor = this.authService.isDoctor()
+    this.isAdm = this.authService.isAdm()
   }
 
   ngOnInit() {}

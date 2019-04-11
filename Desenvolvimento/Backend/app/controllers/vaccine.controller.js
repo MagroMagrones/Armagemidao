@@ -2,7 +2,7 @@ const vaccineModel = require('../models/vaccine.model')
 
 module.exports = {
   getAll: async () => {
-    const vaccine = await userModel
+    const vaccine = await vaccineModel
       .findAll()
       .then()
       .catch(err => console.log(err))
