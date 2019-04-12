@@ -1,13 +1,13 @@
-const medicineDoseModel = require('../models/medicineDose.model')
+const medicineChildModel = require('../models/medicineChild.model')
 
 module.exports = {
   getAll: async () => {
-    const medicineDoses = await medicineDoseModel
+    const medicineChild = await medicineChildModel
       .findAll()
       .then()
       .catch(err => console.log(err))
 
-    if (medicineDoses.length > 0) return medicineDoses
+    if (medicineChild.length > 0) return medicineChild
     else return []
   },
   get: async id => {

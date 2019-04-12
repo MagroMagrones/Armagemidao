@@ -5,6 +5,7 @@ const request = require('request')
 const jwkToPem = require('jwk-to-pem')
 const jwt = require('jsonwebtoken')
 const userService = require('../services/user.service')
+const doctorService = require('../services/doctor.service')
 global.fetch = require('node-fetch')
 const cognitoConf = require('../../config/cognito')
 console.log(cognitoConf)
@@ -20,24 +21,35 @@ const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData)
 module.exports = {
   RegisterUser: async data => {
     console.log('authService - register')
-    const { email, password } = data
+    const { email, password } = data.user
     var attributeList = []
-    let user = await userService.set({ email })
-    if (user.id)
-      return new Promise((resolve, reject) => {
-        userPool.signUp(email, password, attributeList, null, (err, result) => {
-          if (err) {
-            console.log(err)
-            return
-          }
-          const cognitoUser = result.user
-          console.log('user name is ' + cognitoUser.getUsername())
-          return resolve({ mess: 'user name is ' + cognitoUser.getUsername() })
+    delete data.user.password
+    let user = await userService.set(data)
+    console.log({ user })
+    if (data.doctor.isDoctor === false || user.doctor.id)
+      if (user.user.id)
+        return new Promise((resolve, reject) => {
+          userPool.signUp(
+            email,
+            password,
+            attributeList,
+            null,
+            (err, result) => {
+              if (err) {
+                console.log(err)
+                return
+              }
+              const cognitoUser = result.user
+              console.log('user name is ' + cognitoUser.getUsername())
+              return resolve({
+                mess: 'user name is ' + cognitoUser.getUsername()
+              })
+            }
+          )
         })
-      })
-    else return { err: 'erro ao registrar usuário' }
+      else return { err: 'erro ao registrar usuário' }
   },
-  Login: data => {
+  Login: async data => {
     console.log('authService - login')
     const { email, password } = data
     var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
@@ -46,6 +58,18 @@ module.exports = {
         Password: password
       }
     )
+    let user = await userService.get({ email })
+    let doctor = []
+    if (user.length > 0) {
+      doctor = await doctorService.get({ id_usuario: user[0].id })
+    } else {
+      return {
+        err: {
+          message: 'Nome de usuário ou senha incorretos'
+        }
+      }
+    }
+    console.log(doctor)
 
     var userData = {
       Username: email,
@@ -58,10 +82,13 @@ module.exports = {
           // console.log('access token + ' + result.getAccessToken().getJwtToken())
           // console.log('id token + ' + result.getIdToken().getJwtToken())
           // console.log('refresh token + ' + result.getRefreshToken().getToken())
+
           return resolve({
             success: {
               message: 'Bem vindo!',
-              token: result.getIdToken().getJwtToken()
+              token: result.getIdToken().getJwtToken(),
+              admin: user[0].admin === 1,
+              doctor: doctor.length > 0
             }
           })
         },

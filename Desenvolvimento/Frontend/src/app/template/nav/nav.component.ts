@@ -12,13 +12,13 @@ export class NavComponent implements OnInit {
   isDoctor: Observable<boolean>
   isAdm: Observable<boolean>
 
-  constructor(private authService: AuthService) {
-    this.isLoggedIn = this.authService.isAuth()
-    this.isDoctor = this.authService.isDoctor()
-    this.isAdm = this.authService.isAdm()
-  }
+  constructor(private authService: AuthService) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.isLoggedIn = await this.authService.isAuth()
+    this.isDoctor = await this.authService.isDoctor()
+    this.isAdm = await this.authService.isAdm()
+  }
 
   signOut() {
     this.authService.signOut()

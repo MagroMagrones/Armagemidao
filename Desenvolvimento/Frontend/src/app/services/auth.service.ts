@@ -9,16 +9,18 @@ import { Router } from '@angular/router'
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    this.isLoginSubject.next(this.hasToken())
+    this.isdoctorSubject.next(this.hasDoctorPermission())
+    this.isAdmSubject.next(this.hasAdmPermission())
+  }
   isLoginSubject = new BehaviorSubject<boolean>(this.hasToken())
   isdoctorSubject = new BehaviorSubject<boolean>(this.hasDoctorPermission())
   isAdmSubject = new BehaviorSubject<boolean>(this.hasAdmPermission())
   email = ''
   url = environment.api_url
-  doctor = null
-  adm = null
+
   isAuth(): Observable<boolean> {
-    console.log('[auth.service.ts] - isAuth')
     return this.isLoginSubject.asObservable()
   }
   isDoctor(): Observable<boolean> {
@@ -35,8 +37,14 @@ export class AuthService {
         (res: any) => {
           this.email = data.email
           localStorage.setItem('jwt', res.success.token)
-          if (res.success.profile === 'doctor') this.doctor = true
-          if (res.success.profile === 'adm') this.adm = true
+          if (res.success.doctor) {
+            localStorage.setItem('doctor', res.success.doctor)
+            this.isdoctorSubject.next(true)
+          }
+          if (res.success.admin) {
+            localStorage.setItem('admin', res.success.admin)
+            this.isAdmSubject.next(true)
+          }
           this.isLoginSubject.next(true)
           this.router.navigate(['/user'])
         },
@@ -66,9 +74,13 @@ export class AuthService {
     console.log('[auth.service.ts] - signOut')
     const data = { email: this.email }
     localStorage.removeItem('jwt')
-    this.doctor = false
-    this.adm = false
+    localStorage.removeItem('doctor')
+    localStorage.removeItem('admin')
+
+    this.isdoctorSubject.next(false)
+    this.isAdmSubject.next(false)
     this.isLoginSubject.next(false)
+
     this.router.navigate(['/sign-in'])
     return new Promise((resolve, reject) => {
       this.http.post(`${this.url}/sign-out`, data).subscribe(
@@ -112,15 +124,12 @@ export class AuthService {
     })
   }
   hasToken(): boolean {
-    console.log('[auth.service.ts] - hasToken')
     return !!localStorage.getItem('jwt')
   }
   hasDoctorPermission(): boolean {
-    console.log('[auth.service.ts] - hasToken')
-    return !!this.doctor
+    return !!localStorage.getItem('doctor')
   }
   hasAdmPermission(): boolean {
-    console.log('[auth.service.ts] - hasToken')
-    return !!this.adm
+    return !!localStorage.getItem('admin')
   }
 }

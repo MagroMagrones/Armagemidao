@@ -3,7 +3,7 @@ const db = require('../../config/db')
 
 const vaccine = require('./vaccineApplication.model')
 const appointment = require('./appointment.model')
-const dose = require('./medicineDose.model')
+const dose = require('./medicineChild.model')
 const exam = require('./exam.model')
 
 const user = db.define(

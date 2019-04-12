@@ -5,7 +5,6 @@ module.exports = app => {
   require('./contact.route')(app)
   require('./exam.route')(app)
   require('./medicine.route')(app)
-  require('./medicineDose.route')(app)
   require('./notification.route')(app)
   require('./permission.route')(app)
   require('./symptom.route')(app)
@@ -15,4 +14,8 @@ module.exports = app => {
   require('./vaccine.route')(app)
   require('./vaccineApplication.route')(app)
   require('./auth.route')(app)
+  require('./boundPermission.route')(app)
+  require('./childHistory.route')(app)
+  require('./doctor.route')(app)
+  require('./medicineChild.route')(app)
 }
