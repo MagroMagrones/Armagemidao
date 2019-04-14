@@ -1,7 +1,8 @@
-const profileController = require('../controllers/profile.controller')
+const medicineChildController = require('../controllers/medicineChild.controller')
+
 module.exports = {
   getAll: async () => {
-    let res = await profileController.getAll()
+    let res = await medicineChildController.getAll()
     return res
   },
   get: async data => {

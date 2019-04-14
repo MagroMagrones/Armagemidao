@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('../../config/db')
+const child = require('./child.model')
 
-const user = db.define(
+const exam = db.define(
   'Exame',
   {
     pedido: { type: Sequelize.STRING },
@@ -11,9 +12,16 @@ const user = db.define(
     data_reaizado: { type: Sequelize.DATE },
     preparo: { type: Sequelize.STRING },
     observacao: { type: Sequelize.STRING },
-    id_crianca: { type: Sequelize.INTEGER }
+    id_crianca: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: child,
+        key: 'id'
+      }
+    }
   },
   { tableName: 'Exame_teste' }
 )
 
-module.exports = user
+module.exports = exam

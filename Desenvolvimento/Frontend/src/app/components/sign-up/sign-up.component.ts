@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { AuthService } from 'src/app/services/auth.service'
 
 @Component({
@@ -11,9 +11,12 @@ export class SignUpComponent implements OnInit {
   email = ''
   pass1 = ''
   pass2 = ''
+  inputCrm = ''
+  inputSpecialty = ''
+  inputDoctor = false
   ngOnInit() {}
 
-  signUp(email, pass1, pass2) {
+  signUp(email, pass1, pass2, crm, speciality, doctor) {
     if (email.length <= 0 || pass1.length <= 0 || pass2.length <= 0) {
       console.log('required')
       return
@@ -22,7 +25,17 @@ export class SignUpComponent implements OnInit {
       console.log('not equal')
       return
     }
-    let data = { email: email, password: pass1 }
+    if (doctor && !crm) {
+      console.log('crm required')
+      return
+    }
+
+    let data = {
+      user: { email: email, password: pass1 },
+      doctor: { isDoctor: doctor, crm: crm, especialidade: speciality }
+    }
+    console.log(data)
+
     this.authService.signUp(data)
   }
 }

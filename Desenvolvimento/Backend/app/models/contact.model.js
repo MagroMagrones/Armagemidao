@@ -1,15 +1,21 @@
 const Sequelize = require('sequelize')
 const db = require('../../config/db')
+const user = require('./user.model')
 
 const contact = db.define(
   'Contato',
   {
-    id_contato: { type: Sequelize.INTEGER },
     telefone_celular: { type: Sequelize.STRING },
     telefone_residencial: { type: Sequelize.STRING },
     telefone_comercial: { type: Sequelize.STRING },
-    email: { type: Sequelize.STRING },
-    id_usuario: { type: Sequelize.INTEGER }
+    id_usuario: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: user,
+        key: 'id'
+      }
+    }
   },
   { tableName: 'Contato_teste' }
 )

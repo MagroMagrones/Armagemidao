@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { VaccineService } from 'src/app/services/vaccine.service'
 
 @Component({
   selector: 'app-register-vaccine',
@@ -6,27 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-vaccine.component.css']
 })
 export class RegisterVaccineComponent implements OnInit {
-  age = '';
-  name = '';
-  dose = '';
-  diseases = '';
+  inputAge = ''
+  inputName = ''
+  inputDose = ''
+  inputDiseases = ''
 
-  ages = [
-    'Ao nascer',
-    '1 mês',
-    '2 meses',
-    '4 meses',
-    '6 meses',
-    '9 meses',
-    '12 meses',
-    '15 meses',
-    '4 - 6 anos',
-    '10 anos'
-  ];
-  constructor() {}
+  constructor(private vaccineService: VaccineService) {}
 
   ngOnInit() {}
   save(age, name, dose, diseases) {
-    console.log('[register-vaccine.component.ts] - save');
+    console.log('[register-vaccine.component.ts] - save')
+    let data = {
+      idade: age,
+      nome: name,
+      dose: dose,
+      doencas: diseases
+    }
+    this.vaccineService.postvaccine(data)
   }
 }

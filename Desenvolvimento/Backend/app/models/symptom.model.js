@@ -1,15 +1,23 @@
 const Sequelize = require('sequelize')
 const db = require('../../config/db')
+const child = require('./child.model')
 
-const user = db.define(
+const symptom = db.define(
   'Sintoma',
   {
     tipo: { type: Sequelize.STRING },
     data: { type: Sequelize.DATE },
     observacao: { type: Sequelize.STRING },
-    id_crianca: { type: Sequelize.INTEGER }
+    id_crianca: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: child,
+        key: 'id'
+      }
+    }
   },
   { tableName: 'Sintoma_teste' }
 )
 
-module.exports = user
+module.exports = symptom

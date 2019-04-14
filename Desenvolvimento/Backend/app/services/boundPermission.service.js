@@ -1,7 +1,7 @@
-const permissionProfileController = require('../controllers/permissionProfile.controller')
+const boundPermissionController = require('../controllers/boundPermission.controller')
 module.exports = {
   getAll: async () => {
-    let res = await permissionProfileController.getAll()
+    let res = await boundPermissionController.getAll()
     return res
   },
   get: async data => {

@@ -1,7 +1,7 @@
-const medicineDoseController = require('../controllers/medicineDose.controller')
+const childHistoryController = require('../controllers/childHistory.controller')
 module.exports = {
   getAll: async () => {
-    let res = await medicineDoseController.getAll()
+    let res = await childHistoryController.getAll()
     return res
   },
   get: async data => {

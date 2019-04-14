@@ -14,9 +14,36 @@ module.exports = {
     return 'not implemented yet'
   },
   set: async data => {
-    return 'not implemented yet'
+    const resCreateMedicine = await medicineModel
+      .create(data)
+      .then()
+      .catch(err => {
+        console.log(err)
+      })
+    if (!resCreateMedicine.dataValues.id)
+      return { err: 'Falha ao cadastrar medicamento' }
+    else
+      return {
+        message: 'medicamento cadastrado com sucesso',
+        id: resCreateMedicine.dataValues.id
+      }
   },
   update: async (id, data) => {
     return 'not implemented yet'
+  },
+  delete: async data => {
+    const resDeleteMedicine = await medicineModel
+      .destroy({ where: { id: data.id } })
+      .then()
+      .catch(err => {
+        console.log(err)
+      })
+    console.log({ resDeleteMedicine })
+
+    if (!resDeleteMedicine) return { err: 'Falha ao deletar medicamento' }
+    else
+      return {
+        message: 'medicamento deletado com sucesso'
+      }
   }
 }

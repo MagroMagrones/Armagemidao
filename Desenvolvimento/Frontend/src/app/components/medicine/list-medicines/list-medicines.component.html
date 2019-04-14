@@ -1,3 +1,22 @@
-<p>
-  list-medicines works!
-</p>
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let medicine of medicines">
+      <td>{{ medicine.codigo }}</td>
+      <td>{{ medicine.nome }}</td>
+      <td>
+        <button
+          class="btn btn-danger ml-2"
+          (click)="this.removeMedicine(medicine)"
+        >
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

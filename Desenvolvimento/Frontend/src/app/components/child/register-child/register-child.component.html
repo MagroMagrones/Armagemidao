@@ -1,3 +1,118 @@
-<p>
-  register-child works!
-</p>
+<div class="form mx-2">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-8 ">
+      <div class="form-grup">
+        <label>Nome:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="inputName"
+          [(ngModel)]="inputName"
+          placeholder="Nome da crianca"
+        />
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4 ">
+      <div class="form-grup">
+        <label>Data de nascimento:</label>
+        <input
+          type="date"
+          class="form-control"
+          name="inputBirth"
+          [(ngModel)]="inputBirth"
+        />
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="form-group">
+        <label>Genero:</label>
+        <select class="form-control" [(ngModel)]="inputGender">
+          <option value="1">Masc</option>
+          <option value="2">Fem</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="form-group">
+        <label>Tipo sanguíneo:</label>
+        <select class="form-control" [(ngModel)]="inputBlood">
+          <option value="1">A+</option>
+          <option value="2">A-</option>
+          <option value="3">B+</option>
+          <option value="4">B-</option>
+          <option value="5">O+</option>
+          <option value="6">O-</option>
+          <option value="7">AB+</option>
+          <option value="8">AB-</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="form-grup">
+        <label>rg:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="inputRg"
+          [(ngModel)]="inputRg"
+          placeholder="RG da crianca"
+        />
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="form-group">
+        <label>Cor da pele:</label>
+        <select class="form-control" [(ngModel)]="inputSkin">
+          <option value="1">1ª dose</option>
+          <option value="2">2ª dose</option>
+          <option value="3">3ª dose</option>
+          <option value="4">dose única</option>
+          <option value="5">dose inicial</option>
+          <option value="6">reforço</option>
+          <option value="7">1º reforço</option>
+          <option value="8">2º reforço</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="form-group">
+        <label>Cor dos olhos:</label>
+        <select class="form-control" [(ngModel)]="inputEyes">
+          <option value="1">1ª dose</option>
+          <option value="2">2ª dose</option>
+          <option value="3">3ª dose</option>
+          <option value="4">dose única</option>
+          <option value="5">dose inicial</option>
+          <option value="6">reforço</option>
+          <option value="7">1º reforço</option>
+          <option value="8">2º reforço</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="form-group">
+        <label>Cor do cabelo:</label>
+        <select class="form-control" [(ngModel)]="inputHair">
+          <option value="1">1ª dose</option>
+          <option value="2">2ª dose</option>
+          <option value="3">3ª dose</option>
+          <option value="4">dose única</option>
+          <option value="5">dose inicial</option>
+          <option value="6">reforço</option>
+          <option value="7">1º reforço</option>
+          <option value="8">2º reforço</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-12 d-flex justify-content-end">
+      <button class="btn btn-primary" (click)="this.save()">
+        Salvar
+      </button>
+    </div>
+  </div>
+</div>

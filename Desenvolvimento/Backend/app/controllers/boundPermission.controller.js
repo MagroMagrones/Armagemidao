@@ -1,13 +1,13 @@
-const permissionProfileModel = require('../models/permissionProfile.model')
+const boundPermissionModel = require('../models/boundPermission.model')
 
 module.exports = {
   getAll: async () => {
-    const permissionProfiles = await permissionProfileModel
+    const boundPermissions = await boundPermissionModel
       .findAll()
       .then()
       .catch(err => console.log(err))
 
-    if (permissionProfiles.length > 0) return permissionProfiles
+    if (boundPermissions.length > 0) return boundPermissions
     else return []
   },
   get: async id => {

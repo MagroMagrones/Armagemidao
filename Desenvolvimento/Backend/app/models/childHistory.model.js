@@ -2,11 +2,9 @@ const Sequelize = require('sequelize')
 const db = require('../../config/db')
 const child = require('./child.model')
 
-const appointment = db.define(
-  'Consulta',
+const childHistory = db.define(
+  'Historico_crianca',
   {
-    data_consulta: { type: Sequelize.DATE },
-    retorno: { type: Sequelize.TINYINT(1) },
     id_crianca: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -14,9 +12,11 @@ const appointment = db.define(
         model: child,
         key: 'id'
       }
-    }
+    },
+    peso: { type: Sequelize.DECIMAL },
+    altura: { type: Sequelize.DECIMAL }
   },
-  { tableName: 'Consulta_teste' }
+  { tableName: 'Historico_crianca_teste' }
 )
 
-module.exports = appointment
+module.exports = childHistory
