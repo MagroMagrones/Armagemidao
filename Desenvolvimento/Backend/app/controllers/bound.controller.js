@@ -10,8 +10,18 @@ module.exports = {
     if (bounds.length > 0) return bounds
     else return []
   },
-  get: async id => {
-    return 'not implemented yet'
+  get: async payload => {
+    const bounds = await boundModel
+      .findAll({
+        where: {
+          ...payload
+        }
+      })
+      .then()
+      .catch(err => console.log(err))
+
+    if (bounds.length > 0) return bounds
+    else return []
   },
   set: async data => {
     return 'not implemented yet'

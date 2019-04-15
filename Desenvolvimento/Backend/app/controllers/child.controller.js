@@ -14,6 +14,9 @@ module.exports = {
     return 'not implemented yet'
   },
   set: async data => {
+    console.log('\n[child.controller.js] - set')
+    console.log(data)
+
     return 'not implemented yet'
   },
   update: async (id, data) => {
