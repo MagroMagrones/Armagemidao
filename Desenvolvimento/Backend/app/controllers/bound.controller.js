@@ -24,7 +24,19 @@ module.exports = {
     else return []
   },
   set: async data => {
-    return 'not implemented yet'
+    const resCreatebound = await boundModel
+      .create(data)
+      .then()
+      .catch(err => {
+        console.log(err)
+      })
+    if (!resCreatebound.dataValues.id)
+      return { err: 'Falha ao cadastrar Vínculo' }
+    else
+      return {
+        message: 'Vínculo cadastrado com sucesso',
+        id: resCreatebound.dataValues.id
+      }
   },
   update: async (id, data) => {
     return 'not implemented yet'

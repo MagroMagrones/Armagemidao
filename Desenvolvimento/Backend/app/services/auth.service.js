@@ -88,7 +88,8 @@ module.exports = {
               message: 'Bem vindo!',
               token: result.getIdToken().getJwtToken(),
               admin: user[0].admin === 1,
-              doctor: doctor.length > 0
+              doctor: doctor.length > 0,
+              userId: user[0].id
             }
           })
         },

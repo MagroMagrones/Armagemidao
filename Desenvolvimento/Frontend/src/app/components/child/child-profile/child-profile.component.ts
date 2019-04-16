@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ChildService } from 'src/app/services/child.service'
+import { PlatformLocation } from '@angular/common'
 
 @Component({
   selector: 'app-child-profile',
@@ -15,12 +16,21 @@ export class ChildProfileComponent implements OnInit {
   inputSkin = null
   inputEyes = null
   inputHair = null
-  constructor(private childService: ChildService) {}
+  constructor(
+    private childService: ChildService,
+    private platformLocation: PlatformLocation
+  ) {}
 
-  ngOnInit() {}
-  getChild(id) {
+  ngOnInit() {
+    this.getChild()
+  }
+  getChild() {
     console.log('[ChildProfileComponent] get')
-    this.childService.getchild(id)
+
+    this.childService.getchild({
+      key: 'id',
+      value: ''
+    })
   }
 
   update() {

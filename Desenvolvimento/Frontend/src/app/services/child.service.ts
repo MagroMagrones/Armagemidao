@@ -24,7 +24,7 @@ export class ChildService {
   }
   getchild(data) {
     return new Promise((resolve, reject) => {
-      this.http.get(this.url).subscribe(
+      this.http.get(`${this.url}/find?${data.key}=${data.value}`).subscribe(
         res => {
           console.log({ childs: res })
 
@@ -41,7 +41,7 @@ export class ChildService {
     return new Promise((resolve, reject) => {
       this.http.post(this.url, data).subscribe(
         res => {
-          console.log({ childs: res })
+          console.log({ children: res })
 
           resolve(res)
         },
@@ -56,7 +56,7 @@ export class ChildService {
     return new Promise((resolve, reject) => {
       this.http.put(this.url, data).subscribe(
         res => {
-          console.log({ childs: res })
+          console.log({ child: res })
 
           resolve(res)
         },
@@ -70,7 +70,7 @@ export class ChildService {
     return new Promise((resolve, reject) => {
       this.http.delete(this.url, data).subscribe(
         res => {
-          console.log({ childs: res })
+          console.log({ child: res })
 
           resolve(res)
         },

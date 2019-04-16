@@ -22,7 +22,7 @@
     <a *ngIf="(isLoggedIn | async)" [routerLink]="['/medicine']"
       ><i class="fas fa-pills"></i> Medicamentos</a
     >
-    <a *ngIf="(isLoggedIn && isAdm | async)" [routerLink]="['/vaccine']"
+    <a *ngIf="(isLoggedIn | async)" [routerLink]="['/vaccine']"
       ><i class="fas fa-syringe"></i> Vacinas</a
     >
   </nav>
