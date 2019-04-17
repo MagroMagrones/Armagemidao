@@ -18,6 +18,7 @@ export class AuthService {
   isdoctorSubject = new BehaviorSubject<boolean>(this.hasDoctorPermission())
   isAdmSubject = new BehaviorSubject<boolean>(this.hasAdmPermission())
   email = ''
+  id = null
   url = environment.api_url
 
   isAuth(): Observable<boolean> {
@@ -29,13 +30,18 @@ export class AuthService {
   isAdm(): Observable<boolean> {
     return this.isAdmSubject.asObservable()
   }
-
+  getId() {
+    if (localStorage.getItem('userId') == this.id) return this.id
+    else this.signOut()
+  }
   signIn(data) {
     console.log('[auth.service.ts] - signIn')
     return new Promise((resolve, reject) => {
       this.http.post(`${this.url}/sign-in`, data).subscribe(
         (res: any) => {
           this.email = data.email
+          this.id = res.success.userId
+          localStorage.setItem('userId', res.success.userId)
           localStorage.setItem('jwt', res.success.token)
           if (res.success.doctor) {
             localStorage.setItem('doctor', res.success.doctor)
@@ -73,6 +79,7 @@ export class AuthService {
   signOut() {
     console.log('[auth.service.ts] - signOut')
     const data = { email: this.email }
+    localStorage.removeItem('userId')
     localStorage.removeItem('jwt')
     localStorage.removeItem('doctor')
     localStorage.removeItem('admin')

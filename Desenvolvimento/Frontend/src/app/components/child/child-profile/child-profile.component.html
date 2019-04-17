@@ -11,6 +11,7 @@
             <label>Nome:</label>
             <input
               type="text"
+              disabled
               class="form-control"
               name="inputName"
               [(ngModel)]="inputName"
@@ -24,6 +25,7 @@
             <label>Data de nascimento:</label>
             <input
               type="date"
+              disabled
               class="form-control"
               name="inputBirth"
               [(ngModel)]="inputBirth"
@@ -33,9 +35,9 @@
         <div class="col-12 col-md-6 ">
           <div class="form-group">
             <label>Genero:</label>
-            <select class="form-control" [(ngModel)]="inputGender">
-              <option value="1">Masc</option>
-              <option value="2">Fem</option>
+            <select class="form-control" [(ngModel)]="inputGender" disabled>
+              <option value="1">Masculino</option>
+              <option value="2">Feminino</option>
             </select>
           </div>
         </div>
@@ -43,14 +45,14 @@
           <div class="form-group">
             <label>Tipo sanguíneo:</label>
             <select class="form-control" [(ngModel)]="inputBlood">
-              <option value="1">A+</option>
-              <option value="2">A-</option>
-              <option value="3">B+</option>
-              <option value="4">B-</option>
-              <option value="5">O+</option>
-              <option value="6">O-</option>
-              <option value="7">AB+</option>
-              <option value="8">AB-</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
             </select>
           </div>
         </div>
@@ -69,16 +71,14 @@
 
         <div class="col-12 col-md-6 ">
           <div class="form-group">
-            <label>Cor da pele:</label>
+            <label>Etnia:</label>
             <select class="form-control" [(ngModel)]="inputSkin">
-              <option value="1">1ª dose</option>
-              <option value="2">2ª dose</option>
-              <option value="3">3ª dose</option>
-              <option value="4">dose única</option>
-              <option value="5">dose inicial</option>
-              <option value="6">reforço</option>
-              <option value="7">1º reforço</option>
-              <option value="8">2º reforço</option>
+              <option value="Branca">Branca</option>
+              <option value="Parda">Parda</option>
+              <option value="Negra">Negra</option>
+              <option value="Indigena">Indígena</option>
+              <option value="Amarela">Amarela</option>
+              <option value="Outra">Outra</option>
             </select>
           </div>
         </div>
@@ -86,14 +86,14 @@
           <div class="form-group">
             <label>Cor dos olhos:</label>
             <select class="form-control" [(ngModel)]="inputEyes">
-              <option value="1">1ª dose</option>
-              <option value="2">2ª dose</option>
-              <option value="3">3ª dose</option>
-              <option value="4">dose única</option>
-              <option value="5">dose inicial</option>
-              <option value="6">reforço</option>
-              <option value="7">1º reforço</option>
-              <option value="8">2º reforço</option>
+              <option value="Azul">Azul </option>
+              <option value="Azul-esverdeado">Azul-esverdeado</option>
+              <option value="Cinza">Cinza</option>
+              <option value="Castanho">Castanho</option>
+              <option value="Verde">Verde</option>
+              <option value="Avela">Avelã</option>
+              <option value="Mel">Mel</option>
+              <option value="Outro">Outro</option>
             </select>
           </div>
         </div>
@@ -101,14 +101,11 @@
           <div class="form-group">
             <label>Cor do cabelo:</label>
             <select class="form-control" [(ngModel)]="inputHair">
-              <option value="1">1ª dose</option>
-              <option value="2">2ª dose</option>
-              <option value="3">3ª dose</option>
-              <option value="4">dose única</option>
-              <option value="5">dose inicial</option>
-              <option value="6">reforço</option>
-              <option value="7">1º reforço</option>
-              <option value="8">2º reforço</option>
+              <option value="Loiros">Loiros </option>
+              <option value="Ruivos">Ruivos</option>
+              <option value="Castanhos">Castanhos</option>
+              <option value="Pretos">Pretos</option>
+              <option value="Outro">Outro</option>
             </select>
           </div>
         </div>

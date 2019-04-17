@@ -1,12 +1,12 @@
 const childService = require('../services/child.service')
 module.exports = app => {
   app.get('/child', async (req, res) => {
-    console.log('\n[child.routes.js] - get')
+    console.log('\n[child.routes.js] - getAll')
     res.send(await childService.getAll(res.locals))
   })
-  app.get('/child/:id', async (req, res) => {
+  app.get('/child/find', async (req, res) => {
     console.log('\n[child.routes.js] - get')
-    res.send(await childService.get(req.params))
+    res.send(await childService.get(req.query))
   })
   app.post('/child', async (req, res) => {
     console.log('\n[child.routes.js] - post')
