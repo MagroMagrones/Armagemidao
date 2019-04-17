@@ -40,14 +40,15 @@ module.exports = {
         id: resCreateChild.dataValues.id
       }
   },
-  update: async (id, data) => {
+  update: async (id, payload) => {
     const resUpdateChild = await childModel
       .update({ ...payload }, { where: { id: id } })
       .then()
       .catch(err => {
         console.log(err)
       })
-
-    return { message: `Registro alterado com sucesso` }
+    if (resUpdateChild[0] === 1)
+      return { message: `Registro alterado com sucesso` }
+    else return { message: `Erro ao alterar registro` }
   }
 }

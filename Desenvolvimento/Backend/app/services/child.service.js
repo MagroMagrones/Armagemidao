@@ -65,6 +65,7 @@ module.exports = {
     if (checkedData.errMessage) return checkedData.errMessage
     let id = checkedData.id
     let payload = checkedData.payload
+
     let res = await childController.update(id, payload)
     return res
   }
