@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev": "ng build --prod && cd dist/bbwatch && http-server -c-1 -P http://localhost:4200 ."
+    "dev": "ng build --prod && cd dist/bbwatch && http-server -c-1."
   },
   "private": true,
   "dependencies": {

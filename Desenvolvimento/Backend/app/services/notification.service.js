@@ -1,14 +1,20 @@
 const notificationController = require('../controllers/notification.controller')
+
 module.exports = {
   getAll: async () => {
-    let res = await notificationController.getAll()
-    return res
+    let notifications = await notificationController.getAll()
+
+    return notifications
   },
   get: async data => {
-    return 'not implemented yet'
+    let notifications = await notificationController.get(data)
+
+    return notifications
   },
   set: async data => {
-    return 'not implemented yet'
+    let notification = await notificationController.set(data)
+
+    return notification
   },
   update: async data => {
     return 'not implemented yet'

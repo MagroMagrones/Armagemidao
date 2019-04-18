@@ -10,11 +10,10 @@ module.exports = {
         return false
       })
       if (!keyFound) missingList.push(item)
-      else payload[item] = data[item]
     })
     if (missingList.length > 0)
       errMessage = { err: `missing data`, missingList }
-
+    payload = { ...data }
     return { payload, errMessage }
   },
   checkUpdate: (data, id, ...options) => {

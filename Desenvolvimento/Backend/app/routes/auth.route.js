@@ -2,10 +2,7 @@ const authService = require('../services/auth.service')
 module.exports = app => {
   app.post('/sign-in', async (req, res) => {
     console.log('\n[auth.routes.js] - sign-in')
-    let teste = await authService.Login(req.body)
-    console.log(teste)
-
-    res.send(teste)
+    res.send(await authService.Login(req.body))
   })
 
   app.post('/sign-up', async (req, res) => {
@@ -20,7 +17,6 @@ module.exports = app => {
 
   app.post('/change-pass', async (req, res) => {
     console.log('\n[auth.routes.js] - change-pass')
-    console.log(req.body)
 
     res.send(await authService.ForgotenPassword(req.body))
   })

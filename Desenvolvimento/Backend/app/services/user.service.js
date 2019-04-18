@@ -20,15 +20,13 @@ module.exports = {
     return res
   },
   set: async data => {
-    console.log(data)
-
     let checkedData = checkSet(data.user, 'email')
     if (checkedData.errMessage) return checkedData.errMessage
     let payloadUser = checkedData.payload
     payloadUser.ativo = true
     payloadUser.admin = false
     let user = await userController.set(payloadUser)
-    console.log({ doctor: data.doctor })
+
     let doctor
     if (data.doctor.isDoctor) {
       delete data.doctor.isDoctor

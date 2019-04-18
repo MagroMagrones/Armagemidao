@@ -6,6 +6,7 @@ module.exports = app => {
   require('./exam.route')(app)
   require('./medicine.route')(app)
   require('./notification.route')(app)
+  require('./notificationSubscribe.route')(app)
   require('./permission.route')(app)
   require('./symptom.route')(app)
   require('./tutorial.route')(app)

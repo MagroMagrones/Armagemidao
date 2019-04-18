@@ -10,7 +10,6 @@ module.exports = app => {
   })
   app.post('/notification', async (req, res) => {
     console.log('\n[notification.routes.js] - post')
-    console.log(req.body)
 
     res.send(await notificationService.set(req.body))
   })

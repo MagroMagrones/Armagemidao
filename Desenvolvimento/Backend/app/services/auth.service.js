@@ -8,7 +8,6 @@ const userService = require('../services/user.service')
 const doctorService = require('../services/doctor.service')
 global.fetch = require('node-fetch')
 const cognitoConf = require('../../config/cognito')
-console.log(cognitoConf)
 
 const poolData = {
   UserPoolId: cognitoConf.UserPoolId,
@@ -25,7 +24,7 @@ module.exports = {
     var attributeList = []
     delete data.user.password
     let user = await userService.set(data)
-    console.log({ user })
+
     if (data.doctor.isDoctor === false || user.doctor.id)
       if (user.user.id)
         return new Promise((resolve, reject) => {
@@ -69,7 +68,6 @@ module.exports = {
         }
       }
     }
-    console.log(doctor)
 
     var userData = {
       Username: email,

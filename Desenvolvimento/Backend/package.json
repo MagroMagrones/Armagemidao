@@ -19,9 +19,12 @@
     "greenlock-express": "^2.6.8",
     "jsonwebtoken": "^8.5.1",
     "jwk-to-pem": "^2.0.1",
+    "moment": "^2.24.0",
     "mysql2": "^1.6.5",
+    "node-cron": "^2.0.3",
     "node-fetch": "^2.3.0",
     "request": "^2.88.0",
-    "sequelize": "^5.2.9"
+    "sequelize": "^5.2.9",
+    "web-push": "^3.3.3"
   }
 }
