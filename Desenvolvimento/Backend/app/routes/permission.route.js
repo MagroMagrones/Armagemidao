@@ -10,7 +10,6 @@ module.exports = app => {
   })
   app.post('/permission', async (req, res) => {
     console.log('\n[permission.routes.js] - post')
-    console.log(req.body)
 
     res.send(await permissionService.set(req.body))
   })

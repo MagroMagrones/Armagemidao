@@ -10,7 +10,6 @@ module.exports = app => {
   })
   app.post('/tutorial-access', async (req, res) => {
     console.log('\n[tutorialAccess.routes.js] - post')
-    console.log(req.body)
 
     res.send(await tutorialAccessService.set(req.body))
   })

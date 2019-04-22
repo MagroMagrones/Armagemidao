@@ -8,7 +8,7 @@ const child = db.define(
     data_nascimento: { type: Sequelize.DATE, allowNull: false },
     genero: { type: Sequelize.STRING, allowNull: false },
     tipo_sanguineo: { type: Sequelize.STRING },
-    // alergias: { type: Sequelize.STRING },
+    alergias: { type: Sequelize.STRING },
     rg: { type: Sequelize.STRING },
     cor_pele: { type: Sequelize.STRING },
     cor_olhos: { type: Sequelize.STRING },

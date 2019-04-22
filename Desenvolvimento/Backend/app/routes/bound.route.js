@@ -10,7 +10,6 @@ module.exports = app => {
   })
   app.post('/bound', async (req, res) => {
     console.log('\n[bound.routes.js] - post')
-    console.log(req.body)
 
     res.send(await boundService.set(req.body))
   })

@@ -25,7 +25,7 @@ module.exports = {
   },
   set: async data => {
     console.log('\n[child.controller.js] - set')
-    console.log(data)
+
     const resCreateChild = await childModel
       .create(data)
       .then()
