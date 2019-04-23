@@ -31,6 +31,9 @@ import { RegisterMedicineComponent } from './components/medicine/register-medici
 import { MedicineComponent } from './components/medicine/medicine/medicine.component';
 import { VaccineComponent } from './components/vaccine/vaccine/vaccine.component';
 import { ChildComponent } from './components/child/child/child.component';
+import { AppointmentComponent } from './components/appointment/appointment.component';
+import { RegisterAppointmentComponent } from './components/appointment/register-appointment/register-appointment.component';
+import { ListAppointmentComponent } from './components/appointment/list-appointment/list-appointment.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { ChildComponent } from './components/child/child/child.component';
     RegisterMedicineComponent,
     MedicineComponent,
     VaccineComponent,
-    ChildComponent
+    ChildComponent,
+    AppointmentComponent,
+    RegisterAppointmentComponent,
+    ListAppointmentComponent
   ],
   imports: [
     AppRoutingModule,
