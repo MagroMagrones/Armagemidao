@@ -10,7 +10,6 @@ module.exports = app => {
   })
   app.post('/bound-permission', async (req, res) => {
     console.log('\n[boundPermission.routes.js] - post')
-    console.log(req.body)
 
     res.send(await boundPermissionService.set(req.body))
   })

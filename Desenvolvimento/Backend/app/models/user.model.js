@@ -12,7 +12,7 @@ const user = db.define(
     cpf: { type: Sequelize.STRING },
     data_nascimento: { type: Sequelize.DATE }
   },
-  { tableName: 'Usuario_teste' }
+  { tableName: 'Usuario' }
 )
 
 module.exports = user

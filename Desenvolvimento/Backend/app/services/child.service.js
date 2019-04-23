@@ -26,7 +26,6 @@ module.exports = {
         })
 
         return Promise.all(children).then(res => {
-          console.log(res)
           return res
         })
       } else return []
@@ -39,6 +38,9 @@ module.exports = {
     let checkedData = checkSet(data.child, 'nome', 'data_nascimento', 'genero')
     if (checkedData.errMessage) return checkedData.errMessage
     let payloadChild = checkedData.payload
+    console.log({ child: payloadChild })
+    console.log({ childData: data.child })
+
     let child = await childController.set(payloadChild)
 
     let checkedBoundData = checkSet(data.bound, 'id_usuario')

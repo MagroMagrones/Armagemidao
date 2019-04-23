@@ -10,7 +10,6 @@ module.exports = app => {
   })
   app.post('/medicine', async (req, res) => {
     console.log('\n[medicine.routes.js] - post')
-    console.log(req.body)
 
     res.send(await medicineService.set(req.body))
   })

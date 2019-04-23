@@ -9,19 +9,24 @@ const exam = require('./exam.model')
 const user = db.define(
   'Notificacao',
   {
-    tipo: { type: Sequelize.STRING },
-    data_inicio: { type: Sequelize.DATE },
-    data_fim: { type: Sequelize.DATE },
-    intervalo_horas: { type: Sequelize.DECIMAL },
-    intervalo_dias: { type: Sequelize.DECIMAL },
-    intervalo_meses: { type: Sequelize.DECIMAL },
-    intervalo_anos: { type: Sequelize.DECIMAL },
-    dia_semana: { type: Sequelize.STRING },
-    dia_mes: { type: Sequelize.TINYINT },
-    horas: { type: Sequelize.DECIMAL },
+    // tipo: { type: Sequelize.STRING },
+    // data_inicio: { type: Sequelize.DATE },
+    // data_fim: { type: Sequelize.DATE },
+    // intervalo_horas: { type: Sequelize.DECIMAL },
+    // intervalo_dias: { type: Sequelize.DECIMAL },
+    // intervalo_meses: { type: Sequelize.DECIMAL },
+    // intervalo_anos: { type: Sequelize.DECIMAL },
+    titulo: { type: Sequelize.STRING },
+    texto: { type: Sequelize.STRING },
+    // dia_semana: { type: Sequelize.INTEGER },
+    // dia_mes: { type: Sequelize.TINYINT },
+    // ano: { type: Sequelize.INTEGER },
+    dia: { type: Sequelize.DataTypes.DATEONLY },
+    hora: { type: Sequelize.STRING },
+    // minuto: { type: Sequelize.INTEGER },
     id_consulta: {
       type: Sequelize.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: appointment,
         key: 'id'
@@ -29,7 +34,7 @@ const user = db.define(
     },
     id_exame: {
       type: Sequelize.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: exam,
         key: 'id'
@@ -37,7 +42,7 @@ const user = db.define(
     },
     id_dose: {
       type: Sequelize.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: dose,
         key: 'id'
@@ -45,14 +50,14 @@ const user = db.define(
     },
     id_vacina: {
       type: Sequelize.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: vaccine,
         key: 'id'
       }
     }
   },
-  { tableName: 'Notificacao_teste' }
+  { tableName: 'Notificacao' }
 )
 
 module.exports = user

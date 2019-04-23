@@ -23,7 +23,7 @@ const bound = db.define(
       }
     }
   },
-  { tableName: 'Vinculo_teste' }
+  { tableName: 'Vinculo' }
 )
 
 module.exports = bound

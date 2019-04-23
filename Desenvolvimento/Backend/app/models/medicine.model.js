@@ -14,7 +14,7 @@ const medicine = db.define(
     laboratorio: { type: Sequelize.STRING }, // VARCHAR(45) NULL COMMENT '',
     cnpj: { type: Sequelize.STRING } // VARCHAR(50) NULL COMMENT '',
   },
-  { tableName: 'Medicamento_teste' }
+  { tableName: 'Medicamento' }
 )
 
 module.exports = medicine

@@ -21,7 +21,7 @@ const exam = db.define(
       }
     }
   },
-  { tableName: 'Exame_teste' }
+  { tableName: 'Exame' }
 )
 
 module.exports = exam

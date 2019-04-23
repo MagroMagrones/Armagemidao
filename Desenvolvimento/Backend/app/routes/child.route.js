@@ -10,7 +10,6 @@ module.exports = app => {
   })
   app.post('/child', async (req, res) => {
     console.log('\n[child.routes.js] - post')
-    console.log(req.body)
 
     res.send(await childService.set(req.body))
   })

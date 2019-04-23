@@ -17,7 +17,7 @@ const doctor = db.define(
     especialidade: { type: Sequelize.STRING }, // VARCHAR(45) NULL COMMENT '',
     validado_adm: { type: Sequelize.TINYINT(1) } // TINYINT(1) NOT NULL COMMENT '',
   },
-  { tableName: 'Pediatra_teste' }
+  { tableName: 'Pediatra' }
 )
 
 module.exports = doctor

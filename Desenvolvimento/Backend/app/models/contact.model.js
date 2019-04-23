@@ -17,7 +17,7 @@ const contact = db.define(
       }
     }
   },
-  { tableName: 'Contato_teste' }
+  { tableName: 'Contato' }
 )
 
 module.exports = contact

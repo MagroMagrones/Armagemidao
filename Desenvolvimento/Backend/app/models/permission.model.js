@@ -6,7 +6,7 @@ const permission = db.define(
   {
     nome: { type: Sequelize.STRING }
   },
-  { tableName: 'Permissao_teste' }
+  { tableName: 'Permissao' }
 )
 
 module.exports = permission

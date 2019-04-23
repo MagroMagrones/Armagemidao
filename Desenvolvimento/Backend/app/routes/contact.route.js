@@ -10,7 +10,6 @@ module.exports = app => {
   })
   app.post('/contact', async (req, res) => {
     console.log('\n[contact.routes.js] - post')
-    console.log(req.body)
 
     res.send(await contactService.set(req.body))
   })

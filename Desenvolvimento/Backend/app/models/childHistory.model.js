@@ -16,7 +16,7 @@ const childHistory = db.define(
     peso: { type: Sequelize.DECIMAL },
     altura: { type: Sequelize.DECIMAL }
   },
-  { tableName: 'Historico_crianca_teste' }
+  { tableName: 'Historico_crianca' }
 )
 
 module.exports = childHistory

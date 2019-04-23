@@ -16,7 +16,7 @@ const appointment = db.define(
       }
     }
   },
-  { tableName: 'Consulta_teste' }
+  { tableName: 'Consulta' }
 )
 
 module.exports = appointment

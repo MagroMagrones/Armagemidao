@@ -16,7 +16,7 @@ const tutorial = db.define(
       }
     }
   },
-  { tableName: 'Tutorial_teste' }
+  { tableName: 'Tutorial' }
 )
 
 module.exports = tutorial

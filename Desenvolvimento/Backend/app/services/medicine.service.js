@@ -25,8 +25,6 @@ module.exports = {
     return 'not implemented yet'
   },
   delete: async data => {
-    console.log({ data })
-
     if (!data.id) return { err: 'id required' }
     let res = await medicineController.delete(data)
     return res
