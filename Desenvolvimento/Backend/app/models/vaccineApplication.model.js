@@ -24,7 +24,7 @@ const vaccineApplication = db.define(
     },
     data_aplicacao: { type: Sequelize.DATE }
   },
-  { tableName: 'Vacina_Crianca_teste' }
+  { tableName: 'Vacina_Crianca' }
 )
 
 module.exports = vaccineApplication

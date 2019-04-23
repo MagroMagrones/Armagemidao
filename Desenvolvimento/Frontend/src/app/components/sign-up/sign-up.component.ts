@@ -34,7 +34,6 @@ export class SignUpComponent implements OnInit {
       user: { email: email, password: pass1 },
       doctor: { isDoctor: doctor, crm: crm, especialidade: speciality }
     }
-    console.log(data)
 
     this.authService.signUp(data)
   }

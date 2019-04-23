@@ -57,7 +57,7 @@ const user = db.define(
       }
     }
   },
-  { tableName: 'Notificacao_teste' }
+  { tableName: 'Notificacao' }
 )
 
 module.exports = user

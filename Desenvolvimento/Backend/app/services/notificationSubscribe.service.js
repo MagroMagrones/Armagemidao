@@ -34,7 +34,17 @@ module.exports = {
       notification: {
         title: 'New Notification',
         body: 'This is the body of the notification',
-        icon: 'assets/icons/icon-512x512.png'
+        icon: 'assets/icons/icon-512x512.png',
+        actions: [
+          {
+            action: 'explore',
+            title: 'Explore this new world'
+          },
+          {
+            action: 'close',
+            title: 'Close notification'
+          }
+        ]
       }
     }
     let subscriptions = await notificationSubscribeController.getAll()
@@ -59,14 +69,6 @@ module.exports = {
     return Promise.all(promises).then(res => res)
   },
   send: async () => {
-    const notificationPayload = {
-      notification: {
-        title: 'New Notification',
-        body: 'This is the body of the notification',
-        icon: 'assets/icons/icon-512x512.png'
-      }
-    }
-
     let day = moment().format('YYYY/MM/DD ')
     let time = moment().format('LT')
     time = time.toString() + ':00'
@@ -76,8 +78,41 @@ module.exports = {
       hora: time
     })
 
+    const promises = []
     notifications.map(res => {
-      console.log(res.id)
+      let notificationPayload = {
+        notification: {
+          title: res.titulo,
+          body: res.texto,
+          icon: 'assets/icons/icon-512x512.png',
+          actions: [
+            {
+              action: 'explore',
+              title: 'Explore this new world'
+            },
+            {
+              action: 'close',
+              title: 'Close notification'
+            }
+          ]
+        }
+      }
+
+      promises.push(
+        webpush.sendNotification(
+          {
+            endpoint: res.endpoint,
+            expirationTime: res.expirationTime,
+            keys: {
+              p256dh: res.p256dh,
+              auth: res.auth
+            }
+          },
+          JSON.stringify(notificationPayload)
+        )
+      )
     })
+
+    return Promise.all(promises).then(res => res)
   }
 }

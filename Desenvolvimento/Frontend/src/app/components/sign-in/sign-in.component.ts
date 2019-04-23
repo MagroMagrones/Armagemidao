@@ -24,8 +24,6 @@ export class SignInComponent implements OnInit {
   resetPassword(email) {
     console.log('reset')
 
-    console.log({ email })
-
     this.authService.resetPassword({ email })
   }
 }

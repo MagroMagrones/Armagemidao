@@ -17,7 +17,7 @@ const symptom = db.define(
       }
     }
   },
-  { tableName: 'Sintoma_teste' }
+  { tableName: 'Sintoma' }
 )
 
 module.exports = symptom

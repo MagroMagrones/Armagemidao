@@ -37,7 +37,6 @@ export class UserComponent implements OnInit {
     payload['nome'] = inputName
     payload['email'] = inputEmail
     this.userService.postUser(payload).then(res => {
-      console.log(res)
       this.loadList()
     })
   }

@@ -24,7 +24,7 @@ const boundPermission = db.define(
     }, // INT NOT NULL COMMENT '',
     tipo: { type: Sequelize.STRING } // VARCHAR(45) NULL COMMENT '',
   },
-  { tableName: 'Permissao_Vinculo_teste' }
+  { tableName: 'Permissao_Vinculo' }
 )
 
 module.exports = boundPermission

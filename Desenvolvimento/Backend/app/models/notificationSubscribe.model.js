@@ -19,7 +19,7 @@ const notSub = db.define(
     p256dh: { type: Sequelize.STRING },
     auth: { type: Sequelize.STRING }
   },
-  { tableName: 'Notificacao_Subscription_teste' }
+  { tableName: 'Notificacao_Subscription' }
 )
 
 module.exports = notSub

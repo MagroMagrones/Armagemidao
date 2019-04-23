@@ -8,7 +8,7 @@ const tutorialAccess = db.define(
     tipo_acesso: { type: Sequelize.STRING },
     id_tutorial: { type: Sequelize.INTEGER }
   },
-  { tableName: 'Acesso_Tutorial_teste' }
+  { tableName: 'Acesso_Tutorial' }
 )
 
 module.exports = tutorialAccess

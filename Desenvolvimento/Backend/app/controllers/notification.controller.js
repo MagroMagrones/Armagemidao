@@ -1,145 +1,88 @@
 const notificationModel = require('../models/notification.model')
-const examModel = require('../models/exam.model')
-const appointmentModel = require('../models/appointment.model')
-const vaccineApplicationModel = require('../models/vaccineApplication.model')
-const medicineChildModel = require('../models/medicineChild.model')
-const boundModel = require('../models/bound.model')
-const notSubsboundModel = require('../models/notificationSubscribe.model')
 
-const { Op } = require('sequelize')
+const db = require('../../config/db')
+
 module.exports = {
   getAll: async () => {
     let not = []
 
-    vaccineApplicationModel.hasMany(notificationModel, { foreignKey: 'id' })
-    notificationModel.belongsTo(vaccineApplicationModel, {
-      foreignKey: 'id_vacina'
+    await notificationModel.findAll().then(res => {
+      if (res.length > 0) not = [...not, ...res]
     })
-    await notificationModel
-      .findAll({
-        where: { id_vacina: { [Op.not]: null } },
-        include: [vaccineApplicationModel]
-      })
-      .then(res => {
-        if (res.length > 0) not = [...not, ...res]
-      })
-
-    medicineChildModel.hasMany(notificationModel, { foreignKey: 'id' })
-    notificationModel.belongsTo(medicineChildModel, { foreignKey: 'id_dose' })
-    await notificationModel
-      .findAll({
-        where: { id_dose: { [Op.not]: null } },
-        include: [medicineChildModel]
-      })
-      .then(res => {
-        if (res.length > 0) not = [...not, ...res]
-      })
-
-    examModel.hasMany(notificationModel, { foreignKey: 'id' })
-    notificationModel.belongsTo(examModel, { foreignKey: 'id_exame' })
-    await notificationModel
-      .findAll({
-        where: { id_exame: { [Op.not]: null } },
-        include: [examModel]
-      })
-      .then(res => {
-        if (res.length > 0) not = [...not, ...res]
-      })
-    appointmentModel.hasMany(notificationModel, { foreignKey: 'id' })
-    notificationModel.belongsTo(appointmentModel, { foreignKey: 'id_consulta' })
-    await notificationModel
-      .findAll({
-        where: { id_consulta: { [Op.not]: null } },
-        include: [appointmentModel]
-      })
-      .then(res => {
-        if (res.length > 0) not = [...not, ...res]
-      })
 
     return not
   },
   get: async payload => {
     let not = []
 
-    vaccineApplicationModel.hasMany(notificationModel, { foreignKey: 'id' })
-    notificationModel.belongsTo(vaccineApplicationModel, {
-      foreignKey: 'id_vacina'
-    })
-
-    boundModel.hasMany(vaccineApplicationModel, { foreignKey: 'id' })
-    vaccineApplicationModel.belongsTo(boundModel, { foreignKey: 'id_crianca' })
-
-    await notificationModel
-      .findAll({
-        where: { ...payload, id_vacina: { [Op.not]: null } },
-
-        include: [
-          {
-            model: vaccineApplicationModel,
-            include: [boundModel]
-          }
-        ]
-      })
+    await db
+      .query(
+        `SELECT Notificacao.titulo, Notificacao.texto, Notificacao.id_exame,
+        Notificacao_Subscription.id_usuario, Notificacao_Subscription.endpoint, Notificacao_Subscription.expirationTime, Notificacao_Subscription.p256dh, Notificacao_Subscription.auth
+        FROM Notificacao
+        JOIN  Exame on Notificacao.id_exame = Exame.id
+        JOIN Vinculo ON Exame.id_crianca = Vinculo.id_crianca
+        JOIN Notificacao_Subscription ON Notificacao_Subscription.id_usuario = Vinculo.id_usuario
+        WHERE dia =:dia AND hora = :hora;`,
+        {
+          replacements: { dia: payload.dia, hora: payload.hora },
+          type: db.QueryTypes.SELECT
+        }
+      )
       .then(res => {
         if (res.length > 0) not = [...not, ...res]
       })
 
-    medicineChildModel.hasMany(notificationModel, { foreignKey: 'id' })
-    notificationModel.belongsTo(medicineChildModel, { foreignKey: 'id_dose' })
-
-    boundModel.hasMany(medicineChildModel, { foreignKey: 'id' })
-    medicineChildModel.belongsTo(boundModel, { foreignKey: 'id_crianca' })
-
-    await notificationModel
-      .findAll({
-        where: { ...payload, id_dose: { [Op.not]: null } },
-        include: [
-          {
-            model: medicineChildModel,
-            include: [boundModel]
-          }
-        ]
-      })
+    await db
+      .query(
+        `SELECT Notificacao.titulo, Notificacao.texto, Notificacao.id_consulta,
+        Notificacao_Subscription.id_usuario, Notificacao_Subscription.endpoint, Notificacao_Subscription.expirationTime, Notificacao_Subscription.p256dh, Notificacao_Subscription.auth
+        FROM Notificacao
+        JOIN  Consulta on Notificacao.id_consulta = Consulta.id
+        JOIN Vinculo ON Consulta.id_crianca = Vinculo.id_crianca
+        JOIN Notificacao_Subscription ON Notificacao_Subscription.id_usuario = Vinculo.id_usuario
+        WHERE dia =:dia AND hora = :hora;`,
+        {
+          replacements: { dia: payload.dia, hora: payload.hora },
+          type: db.QueryTypes.SELECT
+        }
+      )
       .then(res => {
         if (res.length > 0) not = [...not, ...res]
       })
 
-    examModel.hasMany(notificationModel, { foreignKey: 'id' })
-    notificationModel.belongsTo(examModel, { foreignKey: 'id_exame' })
-
-    boundModel.hasMany(examModel, { foreignKey: 'id' })
-    examModel.belongsTo(boundModel, { foreignKey: 'id_crianca' })
-
-    await notificationModel
-      .findAll({
-        where: { ...payload, id_exame: { [Op.not]: null } },
-        include: [
-          {
-            model: examModel,
-            include: [boundModel]
-          }
-        ]
-      })
+    await db
+      .query(
+        `SELECT Notificacao.titulo, Notificacao.texto, Notificacao.id_dose,
+        Notificacao_Subscription.id_usuario, Notificacao_Subscription.endpoint, Notificacao_Subscription.expirationTime, Notificacao_Subscription.p256dh, Notificacao_Subscription.auth
+        FROM Notificacao
+        JOIN  Medicamento_Crianca on Notificacao.id_dose = Medicamento_Crianca.id
+        JOIN Vinculo ON Medicamento_Crianca.id_crianca = Vinculo.id_crianca
+        JOIN Notificacao_Subscription ON Notificacao_Subscription.id_usuario = Vinculo.id_usuario
+        WHERE dia =:dia AND hora = :hora;`,
+        {
+          replacements: { dia: payload.dia, hora: payload.hora },
+          type: db.QueryTypes.SELECT
+        }
+      )
       .then(res => {
         if (res.length > 0) not = [...not, ...res]
       })
 
-    appointmentModel.hasMany(notificationModel, { foreignKey: 'id' })
-    notificationModel.belongsTo(appointmentModel, { foreignKey: 'id_consulta' })
-
-    boundModel.hasMany(appointmentModel, { foreignKey: 'id' })
-    appointmentModel.belongsTo(boundModel, { foreignKey: 'id_crianca' })
-
-    await notificationModel
-      .findAll({
-        where: { ...payload, id_consulta: { [Op.not]: null } },
-        include: [
-          {
-            model: appointmentModel,
-            include: [boundModel]
-          }
-        ]
-      })
+    await db
+      .query(
+        `SELECT Notificacao.titulo, Notificacao.texto, Notificacao.id_vacina,
+        Notificacao_Subscription.id_usuario, Notificacao_Subscription.endpoint, Notificacao_Subscription.expirationTime, Notificacao_Subscription.p256dh, Notificacao_Subscription.auth
+        FROM Notificacao
+        JOIN  Vacina_Crianca on Notificacao.id_vacina = Vacina_Crianca.id
+        JOIN Vinculo ON Vacina_Crianca.id_crianca = Vinculo.id_crianca
+        JOIN Notificacao_Subscription ON Notificacao_Subscription.id_usuario = Vinculo.id_usuario
+        WHERE dia =:dia AND hora = :hora;`,
+        {
+          replacements: { dia: payload.dia, hora: payload.hora },
+          type: db.QueryTypes.SELECT
+        }
+      )
       .then(res => {
         if (res.length > 0) not = [...not, ...res]
       })

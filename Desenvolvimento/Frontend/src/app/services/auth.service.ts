@@ -31,8 +31,9 @@ export class AuthService {
     return this.isAdmSubject.asObservable()
   }
   getId() {
-    if (localStorage.getItem('userId') == this.id) return this.id
-    else this.signOut()
+    return localStorage.getItem('userId')
+      ? localStorage.getItem('userId')
+      : null
   }
   signIn(data) {
     console.log('[auth.service.ts] - signIn')

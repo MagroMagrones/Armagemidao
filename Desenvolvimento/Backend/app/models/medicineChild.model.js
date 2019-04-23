@@ -26,7 +26,7 @@ const medicine_child = db.define(
     medida: { type: Sequelize.STRING }, // VARCHAR(45) NULL COMMENT '',
     data_medicacao: { type: Sequelize.DATE } // DATETIME NULL COMMENT '',
   },
-  { tableName: 'Medicamento_Crianca_teste' }
+  { tableName: 'Medicamento_Crianca' }
 )
 
 module.exports = medicine_child

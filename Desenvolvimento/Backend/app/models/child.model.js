@@ -14,7 +14,7 @@ const child = db.define(
     cor_olhos: { type: Sequelize.STRING },
     cor_cabelo: { type: Sequelize.STRING }
   },
-  { tableName: 'Crianca_teste' }
+  { tableName: 'Crianca' }
 )
 
 module.exports = child

@@ -17,12 +17,11 @@ export class ListChildrenComponent implements OnInit {
   ngOnInit() {
     this.loadChildren()
   }
-  loadChildren() {
-    this.childService
+  async loadChildren() {
+    await this.childService
       .getchild({ key: 'id_usuario', value: this.authService.getId() })
       .then((res: any) => {
         this.children = res
-        console.log(res)
       })
   }
 }

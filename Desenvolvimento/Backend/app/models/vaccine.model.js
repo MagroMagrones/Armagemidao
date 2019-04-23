@@ -9,7 +9,7 @@ const vaccine = db.define(
     dose: { type: Sequelize.TINYINT },
     doencas_evitadas: { type: Sequelize.STRING }
   },
-  { tableName: 'Vacina_teste' }
+  { tableName: 'Vacina' }
 )
 
 module.exports = vaccine

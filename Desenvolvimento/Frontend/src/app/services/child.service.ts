@@ -23,6 +23,8 @@ export class ChildService {
     })
   }
   getchild(data) {
+    console.log({ data })
+
     return new Promise((resolve, reject) => {
       this.http.get(`${this.url}/find?${data.key}=${data.value}`).subscribe(
         res => {
