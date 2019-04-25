@@ -10,13 +10,15 @@ import { ChildComponent } from './components/child/child/child.component'
 import { VaccineComponent } from './components/vaccine/vaccine/vaccine.component'
 import { MedicineComponent } from './components/medicine/medicine/medicine.component'
 import { ChildProfileComponent } from './components/child/child-profile/child-profile.component'
+import { AppointmentComponent } from './components/appointment/appointment.component'
 
 const protectedRoutes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'child', component: ChildComponent },
   { path: 'child/:id', component: ChildProfileComponent },
   { path: 'vaccine', component: VaccineComponent },
-  { path: 'medicine', component: MedicineComponent }
+  { path: 'medicine', component: MedicineComponent },
+  { path: 'appointment', component: AppointmentComponent }
 ]
 const publicRoutes: Routes = [
   { path: 'sign-in', component: SignInComponent },

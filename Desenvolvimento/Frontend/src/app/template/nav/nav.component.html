@@ -10,9 +10,6 @@
       ><i class="fas fa-sign-out-alt"></i> Sair</a
     >
 
-    <!-- <a *ngIf="(isLoggedIn | async)" routerLink="/home"
-      ><i class="fa fa-home"></i> Início</a
-    > -->
     <a *ngIf="(isLoggedIn | async)" [routerLink]="['/user']"
       ><i class="fas fa-user"></i> Usuários</a
     >
@@ -24,6 +21,9 @@
     >
     <a *ngIf="(isLoggedIn | async)" [routerLink]="['/vaccine']"
       ><i class="fas fa-syringe"></i> Vacinas</a
+    >
+    <a *ngIf="(isLoggedIn | async)" [routerLink]="['/appointment']"
+      ><i class="far fa-list-alt"></i> Consulta</a
     >
   </nav>
 </aside>

@@ -1,0 +1,18 @@
+<div class="row mt-2">
+  <div class="col-12"><h1>Próximas consultas</h1></div>
+
+  <div
+    *ngFor="let appointment of appointments.futureAppointments"
+    class="col-sm-12 col-md-6 col-lg-4"
+  >
+    <app-appointment-card [appointment]="appointment"></app-appointment-card>
+  </div>
+
+  <div class="col-12"><h1>Consultas passadas</h1></div>
+  <div
+    *ngFor="let appointment of appointments.pastAppointmens"
+    class="col-sm-12 col-md-6 col-lg-4"
+  >
+    <app-appointment-card [appointment]="appointment"></app-appointment-card>
+  </div>
+</div>

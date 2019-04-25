@@ -84,17 +84,17 @@ module.exports = {
         notification: {
           title: res.titulo,
           body: res.texto,
-          icon: 'assets/icons/icon-512x512.png',
-          actions: [
-            {
-              action: 'explore',
-              title: 'Explore this new world'
-            },
-            {
-              action: 'close',
-              title: 'Close notification'
-            }
-          ]
+          icon: 'assets/icons/icon-512x512.png'
+          // actions: [
+          //   {
+          //     action: 'explore',
+          //     title: 'Explore this new world'
+          //   },
+          //   {
+          //     action: 'close',
+          //     title: 'Close notification'
+          //   }
+          // ]
         }
       }
 
