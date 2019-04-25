@@ -4,9 +4,9 @@ module.exports = app => {
     console.log('\n[appointment.routes.js] - get')
     res.send(await appointmentService.getAll(res.locals))
   })
-  app.get('/appointment/:id', async (req, res) => {
+  app.get('/appointment/find', async (req, res) => {
     console.log('\n[appointment.routes.js] - get')
-    res.send(await appointmentService.get(req.params))
+    res.send(await appointmentService.get(req.query))
   })
   app.post('/appointment', async (req, res) => {
     console.log('\n[appointment.routes.js] - post')

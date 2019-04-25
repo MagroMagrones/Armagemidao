@@ -11,11 +11,11 @@ import { AppointmentService } from 'src/app/services/appointment.service'
 export class RegisterAppointmentComponent implements OnInit {
   appointmentDate = null
   appointmentTime = null
-  isReturn = null
+  isReturn = false
   idChild = null
-  rememberWeek = null
-  rememberDay = null
-  rememberHour = null
+  rememberWeek = false
+  rememberDay = false
+  rememberHour = false
 
   children = []
 
@@ -35,5 +35,26 @@ export class RegisterAppointmentComponent implements OnInit {
         this.children = res
       })
   }
-  save() {}
+  save() {
+    console.log('[RegisterAppointmentComponent] save')
+    if (!this.appointmentDate || !this.appointmentTime || !this.idChild) {
+      console.log('appointment required')
+      return
+    }
+    let data = {
+      notifications: {
+        rememberWeek: this.rememberWeek,
+        rememberDay: this.rememberDay,
+        rememberHour: this.rememberHour,
+        date: this.appointmentDate,
+        hour: this.appointmentTime
+      },
+      appointment: {
+        data_consulta: this.appointmentDate,
+        retorno: this.isReturn,
+        id_crianca: this.idChild
+      }
+    }
+    this.appointmentService.postAppointment(data)
+  }
 }

@@ -34,6 +34,7 @@ import { ChildComponent } from './components/child/child/child.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { RegisterAppointmentComponent } from './components/appointment/register-appointment/register-appointment.component';
 import { ListAppointmentComponent } from './components/appointment/list-appointment/list-appointment.component';
+import { AppointmentCardComponent } from './components/appointment/appointment-card/appointment-card.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ListAppointmentComponent } from './components/appointment/list-appointm
     ChildComponent,
     AppointmentComponent,
     RegisterAppointmentComponent,
-    ListAppointmentComponent
+    ListAppointmentComponent,
+    AppointmentCardComponent
   ],
   imports: [
     AppRoutingModule,
