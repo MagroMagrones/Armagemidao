@@ -57,10 +57,11 @@ export class AuthService {
             this.router.navigate(['/user'])
           } 
           else if (res.err)
-            resolve(res.err.message)
+            reject(res.err.message)
         },
         err => {
           console.log(err)
+          reject(err.message)
         }
       )
     })
@@ -69,14 +70,19 @@ export class AuthService {
     console.log('[auth.service.ts] - signUp')
     return new Promise((resolve, reject) => {
       this.http.post(`${this.url}/sign-up`, data).subscribe(
-        res => {
-          this.email = data.email
-          swal('enviamos um email para confirmar o seu cadastro')
-          this.router.navigate(['/sign-in'])
-          resolve(res)
+        (res: any) => {
+          if(res.success){
+            this.email = data.email
+            swal('enviamos um email para confirmar o seu cadastro')
+            this.router.navigate(['/sign-in'])
+            resolve(res)
+          } 
+          else if (res.err)
+            reject(res.err.message)
         },
         err => {
           console.log(err)
+          reject(err.message)
         }
       )
     })
@@ -99,6 +105,7 @@ export class AuthService {
         (res: any) => {},
         err => {
           console.log(err)
+          reject(err.message)
         }
       )
     })
@@ -109,12 +116,13 @@ export class AuthService {
       this.http.post(`${this.url}/change-pass`, data).subscribe(
         res => {
           this.email = data.email
-          swal('enviamos um email com um codigo para resetar a sua senha')
+          swal('Enviamos um email com um codigo para resetar a sua senha')
           this.router.navigate(['/new-pass'])
           resolve(res)
         },
         err => {
           console.log(err)
+          reject(err.message)
         }
       )
     })
@@ -124,13 +132,14 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       this.http.post(`${this.url}/confirm-pass`, data).subscribe(
         res => {
-          swal('senha redefinida com sucesso').then(() => {
+          swal('Senha redefinida com sucesso').then(() => {
             this.router.navigate(['/sign-in'])
           })
           resolve(res)
         },
         err => {
           console.log(err)
+          reject(err.message)
         }
       )
     })

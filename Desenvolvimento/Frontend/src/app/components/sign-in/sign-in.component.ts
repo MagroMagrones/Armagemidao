@@ -26,8 +26,8 @@ export class SignInComponent implements OnInit {
     this.requestInProgress = true
     this.showError = false
     const data = { email: email, password: pass }
-    this.authService.signIn(data).then((data: any) => {
-      this.error = data 
+    this.authService.signIn(data).then(undefined, (err: any) => {
+      this.error = err 
       this.showError = true
       this.requestInProgress = false
     })

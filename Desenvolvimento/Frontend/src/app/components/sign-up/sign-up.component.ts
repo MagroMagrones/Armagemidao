@@ -42,8 +42,8 @@ export class SignUpComponent implements OnInit {
       doctor: { isDoctor: doctor, crm: crm, especialidade: speciality }
     }
 
-    this.authService.signUp(data).then((data: any) => {
-      this.error = data 
+    this.authService.signUp(data).then(undefined, (err: any) => {
+      this.error = err 
       this.showError = true
       this.requestInProgress = false
     })
