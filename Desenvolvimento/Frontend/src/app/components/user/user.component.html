@@ -3,10 +3,14 @@
   [title]="'Usuarios'"
   [subtitle]="'Cadastro do usuario no sistema bb-watch'"
 >
-  <div class="form mx-2">
+  <form
+    class="form mx-2" 
+    (ngSubmit)="newUserForm.form.valid && save(newUserForm)"
+    #newUserForm="ngForm"
+  >
     <div class="row">
       <div class="col-12 col-md-6">
-        <div class="form-grup">
+        <div class="form-group">
           <label>Nome:</label>
           <input
             type="text"
@@ -14,19 +18,32 @@
             name="name"
             [(ngModel)]="inputName"
             placeholder="Digite o nome"
+            #inpName="ngModel"
+            [ngClass]="{ 'is-invalid': newUserForm.submitted && inpName.invalid }"
+            required
           />
+          <p *ngIf="newUserForm.submitted && inpName.invalid">Nome obrigatório</p>
         </div>
       </div>
       <div class="col-12 col-md-6">
         <div class="form-group">
-          <label>E-Mail:</label>
+          <label>E-mail:</label>
           <input
             type="email"
             class="form-control"
             name="email"
             [(ngModel)]="inputEmail"
             placeholder="Digite o e-mail"
+            email
+            required
+            pattern="^[\w.%+-]+@[\w-]+(\.[a-zA-Z0-9]+)+$"
+            #inpEmail="ngModel"
+            [ngClass]="{ 'is-invalid': newUserForm.submitted && inpEmail.invalid }"
           />
+          <div>
+            <span *ngIf="newUserForm.submitted && inpEmail.invalid">E-mail inválido. </span>
+            <span *ngIf="newUserForm.submitted && !!inputEmail && inputEmail.length == 0">E-mail obrigatório. </span>
+          </div>
         </div>
       </div>
     </div>
@@ -34,19 +51,11 @@
     <hr />
     <div class="row">
       <div class="col-12 d-flex justify-content-end">
-        <button
-          class="btn btn-primary"
-          (click)="this.save(inputName, inputEmail)"
-        >
-          Salvar
-        </button>
-
-        <button class="btn btn-secondary ml-2" (click)="this.clear()">
-          Cancelar
-        </button>
+        <input type="submit" class="btn btn-primary" value="Salvar" />
+        <input type="button" class="btn btn-secondary ml-2" (click)="clear(newUserForm)" value="Cancelar"/>
       </div>
     </div>
-  </div>
+  </form>
 
   <table class="table mt-4">
     <thead>
@@ -61,11 +70,11 @@
         <td>{{ user.nome }}</td>
         <td>{{ user.email }}</td>
         <td>
-          <button class="btn btn-warning" (click)="this.load(user)">
+          <button class="btn btn-warning" (click)="load(user)">
             <i class="fas fa-pen"></i>
           </button>
 
-          <button class="btn btn-danger ml-2" (click)="this.remove(user)">
+          <button class="btn btn-danger ml-2" (click)="remove(user)">
             <i class="fa fa-trash"></i>
           </button>
         </td>

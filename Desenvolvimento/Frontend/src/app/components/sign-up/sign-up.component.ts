@@ -1,5 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input, ViewChild } from '@angular/core'
+import { NgForm } from '@angular/forms'
 import { AuthService } from 'src/app/services/auth.service'
+import UserRequest from '../../models/user-request.model'
+import User from '../../models/user.model'
+import Doctor from '../../models/doctor.model'
 
 @Component({
   selector: 'app-sign-up',
@@ -18,17 +22,12 @@ export class SignUpComponent implements OnInit {
   error = ''
   showError = false
   requestInProgress = false
+  @ViewChild('signUpForm') form: NgForm
 
   ngOnInit() {}
 
   signUp(email, pass1, pass2, crm, speciality, doctor) {
-    if (email.length <= 0 || pass1.length <= 0 || pass2.length <= 0)
-      return
-    
-    if (pass1 !== pass2)
-      return
-
-    if (doctor && !crm)
+    if (this.form.invalid)
       return
 
     if(this.requestInProgress)
@@ -37,12 +36,14 @@ export class SignUpComponent implements OnInit {
     this.requestInProgress = true
     this.showError = false
 
-    let data = {
-      user: { email: email, password: pass1 },
-      doctor: { isDoctor: doctor, crm: crm, especialidade: speciality }
-    }
+    let request: UserRequest = Object.assign(
+      new UserRequest(),
+      {
+        user: { email: email, password: pass1 },
+        doctor: { isDoctor: doctor, crm: crm, especialidade: speciality }
+      })
 
-    this.authService.signUp(data).then(undefined, (err: any) => {
+    this.authService.signUp(request).then(undefined, (err: any) => {
       this.error = err 
       this.showError = true
       this.requestInProgress = false

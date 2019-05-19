@@ -41,7 +41,7 @@ export class AuthService {
       this.http.post(`${this.url}/sign-in`, data).subscribe(
         (res: any) => {
           if(res.success){
-            this.email = data.email
+            this.email = data.user.email
             this.id = res.success.userId
             localStorage.setItem('userId', res.success.userId)
             localStorage.setItem('jwt', res.success.token)
@@ -72,8 +72,8 @@ export class AuthService {
       this.http.post(`${this.url}/sign-up`, data).subscribe(
         (res: any) => {
           if(res.success){
-            this.email = data.email
-            swal('enviamos um email para confirmar o seu cadastro')
+            this.email = data.user.email
+            swal('Enviamos um email para confirmar o seu cadastro')
             this.router.navigate(['/sign-in'])
             resolve(res)
           } 

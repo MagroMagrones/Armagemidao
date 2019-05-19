@@ -17,10 +17,12 @@ export class UserService {
         },
         err => {
           console.log(err)
+          reject(err.message)
         }
       )
     })
   }
+
   getUser(data) {
     return new Promise((resolve, reject) => {
       this.http.get(this.url).subscribe(
@@ -31,6 +33,7 @@ export class UserService {
         },
         err => {
           console.log(err)
+          reject(err.message)
         }
       )
     })
@@ -46,6 +49,7 @@ export class UserService {
         },
         err => {
           console.log(err)
+          reject(err.message)
         }
       )
     })
@@ -61,10 +65,12 @@ export class UserService {
         },
         err => {
           console.log(err)
+          reject(err.message)
         }
       )
     })
   }
+
   deleteUser(data) {
     return new Promise((resolve, reject) => {
       this.http.delete(this.url, data).subscribe(
@@ -75,6 +81,7 @@ export class UserService {
         },
         err => {
           console.log(err)
+          reject(err.message)
         }
       )
     })

@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { NgForm } from '@angular/forms'
 import { UserService } from 'src/app/services/user.service'
 import { NotSubscriptionService } from 'src/app/services/not-subscription.service'
+import UserRequest from '../../models/user-request.model'
+import User from '../../models/user.model'
 
 @Component({
   selector: 'app-user',
@@ -12,35 +15,48 @@ export class UserComponent implements OnInit {
     private userService: UserService,
     private notService: NotSubscriptionService
   ) {}
-  users = []
+  users: User[] = []
   inputName = ''
   inputEmail = ''
+  @ViewChild('newUserForm') form: NgForm
+
   ngOnInit() {
     this.loadList()
     this.notService.subscribe()
   }
+
   loadList() {
     this.userService.getUsers().then((users: any) => {
       this.users = users
     })
   }
-  save(inputName, inputEmail) {
-    let payload = {}
-    if (!inputName) {
-      alert('campo nome é obrigatório')
+
+  save() {
+    if (this.form.invalid)
       return
-    }
-    if (!inputEmail) {
-      alert('campo email é obrigatório')
-      return
-    }
-    payload['nome'] = inputName
-    payload['email'] = inputEmail
-    this.userService.postUser(payload).then(res => {
+
+    let request = new UserRequest()
+    request.user.nome = this.inputName
+    request.user.email = this.inputEmail
+
+    this.userService.postUser(request).then(res => {
+      this.clear()
       this.loadList()
     })
   }
-  clear() {}
+
+  clear = () => this.form.resetForm()
+
   load(user) {}
-  remove(user) {}
+
+  remove(user: User) {
+    if(!user || !user.id)
+      return
+
+    this.userService.deleteUser(user).then((users: any) => {
+      let index: number = this.users.findIndex(u => u.id == user.id)
+      if(index > 0)
+        this.users.splice(index, 1)
+    })
+  }
 }
