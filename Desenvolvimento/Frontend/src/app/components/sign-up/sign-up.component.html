@@ -3,7 +3,11 @@
   [subtitle]="'Preencha os campos a seguir para entrar em nosso sistema'"
 >
   <div class="row">
-    <form class="col-12 col-md-6 offset-md-3 ">
+    <form 
+      class="col-12 col-md-6 offset-md-3" 
+      (ngSubmit)="signUpForm.form.valid && signUp(email, pass1, pass2, inputCrm, inputSpecialty, inputDoctor)"
+      #signUpForm="ngForm"
+    >
       <div class="form-group">
         <label for="inpEmail">Email</label>
         <input
@@ -13,7 +17,12 @@
           placeholder="bbwatch@email.com"
           [(ngModel)]="email"
           name="inpEmail"
+          email
+          pattern="^[\w.%+-]+@[\w-]+(\.[a-zA-Z0-9]+)+$"
+          #inpEmail="ngModel"
+          [ngClass]="{ 'is-invalid': signUpForm.submitted && inpEmail.invalid }"
         />
+        <p *ngIf="signUpForm.submitted && inpEmail.invalid">E-mail inválido</p>
       </div>
       <div class="form-group">
         <label for="inpPass1">Senha</label>
@@ -24,7 +33,12 @@
           placeholder="Password"
           [(ngModel)]="pass1"
           name="inpPass1"
+          required
+          [pattern]="passPattern"
+          #inpPass1="ngModel"
+          [ngClass]="{ 'is-invalid': signUpForm.submitted && inpPass1.invalid }"
         />
+        <p *ngIf="signUpForm.submitted && inpPass1.invalid">Senha deve conter ao menos uma letra maiúscula, uma letra minúscula, um número e um caracter especial</p>
       </div>
       <div class="form-group">
         <label for="inpPass2">Confirme a senha</label>
@@ -35,8 +49,11 @@
           placeholder="Password"
           [(ngModel)]="pass2"
           name="inpPass2"
+          [pattern]="inpPass1.value"
+          #inpPass2="ngModel"
+          [ngClass]="{ 'is-invalid': signUpForm.submitted && inpPass2.invalid }"
         />
-        <p *ngIf="pass1 !== pass2">As senhas não correspondem</p>
+        <p *ngIf="signUpForm.submitted && inpPass2.invalid">As senhas não correspondem</p>
       </div>
 
       <div class="form-group" *ngIf="inputDoctor">
@@ -47,7 +64,11 @@
           id="inputCrm"
           [(ngModel)]="inputCrm"
           name="inputCrm"
+          [required]="inputDoctor ? true : undefined"
+          #crm="ngModel"
+          [ngClass]="{ 'is-invalid': signUpForm.submitted && crm.invalid }"
         />
+        <p *ngIf="signUpForm.submitted && crm.invalid">É necessário informar o CRM caso seja pediatra</p>
       </div>
       <div class="form-group" *ngIf="inputDoctor">
         <label for="inputSpecialty">Especialidade</label>
@@ -77,9 +98,6 @@
           <button
             type="submit"
             class="btn btn-primary btn-block mt-2"
-            (click)="
-              signUp(email, pass1, pass2, inputCrm, inputSpecialty, inputDoctor)
-            "
           >
             Cadastrar
           </button>
@@ -93,6 +111,9 @@
             Já sou cadastrado
           </button>
         </div>
+      </div>      
+      <div class="col-12 mt-2 alert alert-danger" *ngIf="!!error && showError">
+        {{error}}
       </div>
     </form>
   </div>

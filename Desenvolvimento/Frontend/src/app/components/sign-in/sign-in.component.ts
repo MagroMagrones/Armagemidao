@@ -10,20 +10,36 @@ export class SignInComponent implements OnInit {
   constructor(private authService: AuthService) {}
   email = ''
   pass = ''
+  error = ''
+  showError = false
+  requestInProgress = false
 
   ngOnInit() {}
 
   signIn(email, pass) {
-    if (email.length <= 0 || pass.length <= 0) {
-      console.log('required')
+    if (email.length <= 0 || pass.length <= 0)
+      return
+
+    if(this.requestInProgress)
+      return
+
+    this.requestInProgress = true
+    this.showError = false
+    const data = { email: email, password: pass }
+    this.authService.signIn(data).then((data: any) => {
+      this.error = data 
+      this.showError = true
+      this.requestInProgress = false
+    })
+  }
+  resetPassword(email: string, valid: boolean) {
+    if (email.length <= 0 || !valid){
+      this.error = 'Necessário informar um e-mail válido para redefinir sua senha'      
+      this.showError = true
       return
     }
-    const data = { email: email, password: pass }
-    this.authService.signIn(data)
-  }
-  resetPassword(email) {
-    console.log('reset')
 
+    this.showError = false
     this.authService.resetPassword({ email })
   }
 }

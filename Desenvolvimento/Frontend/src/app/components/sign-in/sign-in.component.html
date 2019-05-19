@@ -1,6 +1,10 @@
 <app-main [title]="'Login'" [subtitle]="'Acesse o sistema'">
   <div class="row">
-    <form class="col-12 col-md-6 offset-md-3">
+    <form 
+      class="col-12 col-md-6 offset-md-3" 
+      (ngSubmit)="loginForm.form.valid && signIn(email, pass)" 
+      #loginForm="ngForm"
+    >
       <div class="form-group">
         <label for="inpEmail">Email</label>
         <input
@@ -11,6 +15,10 @@
           [(ngModel)]="email"
           name="inpEmail"
           required
+          email
+          pattern="^[\w.%+-]+@[\w-]+(\.[a-zA-Z0-9]+)+$"
+          #inpEmail="ngModel"
+          [ngClass]="{ 'is-invalid': loginForm.submitted && inpEmail.invalid }"
         />
       </div>
       <div class="form-group">
@@ -23,6 +31,8 @@
           placeholder="Password"
           [(ngModel)]="pass"
           required
+          #Password="ngModel"
+          [ngClass]="{ 'is-invalid': loginForm.submitted && Password.invalid }"
         />
       </div>
       <div class="row">
@@ -30,20 +40,22 @@
           <button
             type="submit"
             class="btn btn-primary btn-block"
-            (click)="signIn(email, pass)"
           >
             Entrar
           </button>
         </div>
         <div class="col-12 col-md-6 mt-2">
           <button
-            type="submit"
+            type="button"
             class="btn btn-danger btn-block"
-            (click)="resetPassword(email)"
+            (click)="resetPassword(email, inpEmail.valid)"
           >
             Redefinir senha
           </button>
         </div>
+      </div>      
+      <div class="col-12 mt-2 alert alert-danger" *ngIf="!!error && showError">
+        {{error}}
       </div>
     </form>
   </div>

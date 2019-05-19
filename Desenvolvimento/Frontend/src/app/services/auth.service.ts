@@ -40,20 +40,24 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       this.http.post(`${this.url}/sign-in`, data).subscribe(
         (res: any) => {
-          this.email = data.email
-          this.id = res.success.userId
-          localStorage.setItem('userId', res.success.userId)
-          localStorage.setItem('jwt', res.success.token)
-          if (res.success.doctor) {
-            localStorage.setItem('doctor', res.success.doctor)
-            this.isdoctorSubject.next(true)
-          }
-          if (res.success.admin) {
-            localStorage.setItem('admin', res.success.admin)
-            this.isAdmSubject.next(true)
-          }
-          this.isLoginSubject.next(true)
-          this.router.navigate(['/user'])
+          if(res.success){
+            this.email = data.email
+            this.id = res.success.userId
+            localStorage.setItem('userId', res.success.userId)
+            localStorage.setItem('jwt', res.success.token)
+            if (res.success.doctor) {
+              localStorage.setItem('doctor', res.success.doctor)
+              this.isdoctorSubject.next(true)
+            }
+            if (res.success.admin) {
+              localStorage.setItem('admin', res.success.admin)
+              this.isAdmSubject.next(true)
+            }
+            this.isLoginSubject.next(true)
+            this.router.navigate(['/user'])
+          } 
+          else if (res.err)
+            resolve(res.err.message)
         },
         err => {
           console.log(err)
