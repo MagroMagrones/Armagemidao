@@ -14,7 +14,9 @@ const childHistory = db.define(
       }
     },
     peso: { type: Sequelize.DECIMAL },
-    altura: { type: Sequelize.DECIMAL }
+    altura: { type: Sequelize.DECIMAL },
+    pressao_arterial: { type: Sequelize.STRING },
+    temperatura: { type: Sequelize.DECIMAL }
   },
   { tableName: 'Historico_crianca' }
 )

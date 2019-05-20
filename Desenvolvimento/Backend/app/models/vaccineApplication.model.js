@@ -22,7 +22,8 @@ const vaccineApplication = db.define(
         key: 'id'
       }
     },
-    data_aplicacao: { type: Sequelize.DATE }
+    data_aplicacao: { type: Sequelize.DATE },
+    dose_numero: { type: Sequelize.TINYINT }
   },
   { tableName: 'Vacina_Crianca' }
 )

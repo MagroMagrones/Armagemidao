@@ -81,6 +81,7 @@ module.exports = {
     const promises = []
     notifications.map(res => {
       let notificationPayload = {
+        
         notification: {
           title: res.titulo,
           body: res.texto,

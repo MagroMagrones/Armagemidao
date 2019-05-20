@@ -12,10 +12,14 @@ module.exports = {
     return res
   },
   get: async data => {
-    return 'not implemented yet'
+    let checkedData = checkGet(data, 'nome', 'tipo')
+    if (checkedData.errMessage) return checkedData.errMessage
+    let payload = checkedData.payload
+    let res = await medicineController.get(payload)
+    return res
   },
   set: async data => {
-    let checkedData = checkSet(data, 'codigo', 'nome')
+    let checkedData = checkSet(data, 'nome', 'tipo')
     if (checkedData.errMessage) return checkedData.errMessage
     let payload = checkedData.payload
     let res = await medicineController.set(payload)
@@ -25,7 +29,7 @@ module.exports = {
     return 'not implemented yet'
   },
   delete: async data => {
-    if (!data.id) return { err: 'id required' }
+    if (!data.id_medicamento_registro) return { err: 'id required' }
     let res = await medicineController.delete(data)
     return res
   }

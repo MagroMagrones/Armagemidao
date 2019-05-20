@@ -14,7 +14,7 @@ const doctor = db.define(
       }
     },
     crm: { type: Sequelize.STRING, allowNull: false }, // INT NOT NULL COMMENT '',
-    especialidade: { type: Sequelize.STRING }, // VARCHAR(45) NULL COMMENT '',
+    subespecialidade: { type: Sequelize.STRING }, // VARCHAR(45) NULL COMMENT '',
     validado_adm: { type: Sequelize.TINYINT(1) } // TINYINT(1) NOT NULL COMMENT '',
   },
   { tableName: 'Pediatra' }
