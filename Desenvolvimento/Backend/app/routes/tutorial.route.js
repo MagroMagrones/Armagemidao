@@ -4,7 +4,7 @@ module.exports = app => {
     console.log('\n[tutorial.routes.js] - get')
     res.send(await tutorialService.getAll(res.locals))
   })
-  app.get('/tutorial/:id', async (req, res) => {
+  app.get('/tutorial/find', async (req, res) => { //em dos q ta :id colocar find igualk aqui
     console.log('\n[tutorial.routes.js] - get')
     res.send(await tutorialService.get(req.params))
   })

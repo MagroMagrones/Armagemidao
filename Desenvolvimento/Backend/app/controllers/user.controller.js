@@ -30,6 +30,7 @@ module.exports = {
       .catch(err => {
         console.log(err)
       })
+      console.log(data)
     if (!resCreateUser.dataValues.id)
       return { err: 'Falha ao cadastrar usuário' }
     else

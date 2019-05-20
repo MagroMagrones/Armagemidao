@@ -5,9 +5,10 @@ const vaccine = db.define(
   'Vacina',
   {
     nome: { type: Sequelize.STRING },
-    idade: { type: Sequelize.STRING },
-    dose: { type: Sequelize.TINYINT },
-    doencas_evitadas: { type: Sequelize.STRING }
+    idade_inicio: { type: Sequelize.STRING },
+    idade_fim: { type: Sequelize.STRING },
+    dose_multipla: { type: Sequelize.TINYINT },
+    validado_adm: { type: Sequelize.TINYINT }
   },
   { tableName: 'Vacina' }
 )
