@@ -41,7 +41,7 @@ export class AuthService {
       this.http.post(`${this.url}/sign-in`, data).subscribe(
         (res: any) => {
           if(res.success){
-            this.email = data.user.email
+            this.email = data.email
             this.id = res.success.userId
             localStorage.setItem('userId', res.success.userId)
             localStorage.setItem('jwt', res.success.token)

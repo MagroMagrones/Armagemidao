@@ -16,7 +16,7 @@
             type="text"
             class="form-control"
             name="name"
-            [(ngModel)]="inputName"
+            [(ngModel)]="user.nome"
             placeholder="Digite o nome"
             #inpName="ngModel"
             [ngClass]="{ 'is-invalid': newUserForm.submitted && inpName.invalid }"
@@ -32,7 +32,7 @@
             type="email"
             class="form-control"
             name="email"
-            [(ngModel)]="inputEmail"
+            [(ngModel)]="user.email"
             placeholder="Digite o e-mail"
             email
             required

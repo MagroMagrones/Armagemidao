@@ -16,8 +16,7 @@ export class UserComponent implements OnInit {
     private notService: NotSubscriptionService
   ) {}
   users: User[] = []
-  inputName = ''
-  inputEmail = ''
+  user: User = new User()
   @ViewChild('newUserForm') form: NgForm
 
   ngOnInit() {
@@ -35,19 +34,28 @@ export class UserComponent implements OnInit {
     if (this.form.invalid)
       return
 
-    let request = new UserRequest()
-    request.user.nome = this.inputName
-    request.user.email = this.inputEmail
-
-    this.userService.postUser(request).then(res => {
-      this.clear()
-      this.loadList()
-    })
+    if(this.user.id > 0) {
+      let request = { id: this.user.id, data: { nome: this.user.nome, email: this.user.email } }
+      this.userService.putUser(request).then(res => {
+        this.clear()
+        this.loadList()
+      })
+    } else {
+      let request = new UserRequest()
+      request.user = this.user
+      this.userService.postUser(request).then(res => {
+        this.clear()
+        this.loadList()
+      })
+    }
   }
 
-  clear = () => this.form.resetForm()
+  clear = () => {
+    this.form.resetForm()
+    this.user = new User()
+  }
 
-  load(user) {}
+  load = (user: User) => this.user = user
 
   remove(user: User) {
     if(!user || !user.id)
