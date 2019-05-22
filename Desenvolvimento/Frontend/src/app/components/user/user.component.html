@@ -5,7 +5,7 @@
 >
   <form
     class="form mx-2" 
-    (ngSubmit)="newUserForm.form.valid && save(newUserForm)"
+    (ngSubmit)="newUserForm.form.valid && save()"
     #newUserForm="ngForm"
   >
     <div class="row">
@@ -42,7 +42,7 @@
           />
           <div>
             <span *ngIf="newUserForm.submitted && inpEmail.invalid">E-mail inválido. </span>
-            <span *ngIf="newUserForm.submitted && !!inputEmail && inputEmail.length == 0">E-mail obrigatório. </span>
+            <span *ngIf="newUserForm.submitted && !!user.email && user.email.length == 0">E-mail obrigatório. </span>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@
     <div class="row">
       <div class="col-12 d-flex justify-content-end">
         <input type="submit" class="btn btn-primary" value="Salvar" />
-        <input type="button" class="btn btn-secondary ml-2" (click)="clear(newUserForm)" value="Cancelar"/>
+        <input type="button" class="btn btn-secondary ml-2" (click)="clear()" value="Cancelar"/>
       </div>
     </div>
   </form>
