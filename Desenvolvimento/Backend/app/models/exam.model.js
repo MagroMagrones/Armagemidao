@@ -5,12 +5,11 @@ const child = require('./child.model')
 const exam = db.define(
   'Exame',
   {
-    pedido: { type: Sequelize.STRING },
-    digitalizacao: { type: Sequelize.STRING },
+    url_pedido_digitalizado: { type: Sequelize.STRING },
+    url_resultado_digitalizado: { type: Sequelize.STRING },
     realizado: { type: Sequelize.TINYINT },
     data_pedido: { type: Sequelize.DATE },
     data_reaizado: { type: Sequelize.DATE },
-    preparo: { type: Sequelize.STRING },
     observacao: { type: Sequelize.STRING },
     id_crianca: {
       type: Sequelize.INTEGER,

@@ -24,7 +24,8 @@ const medicine_child = db.define(
     }, // INT NOT NULL COMMENT '',
     quantidade: { type: Sequelize.DECIMAL }, // DECIMAL NULL COMMENT '',
     medida: { type: Sequelize.STRING }, // VARCHAR(45) NULL COMMENT '',
-    data_medicacao: { type: Sequelize.DATE } // DATETIME NULL COMMENT '',
+    data_medicacao: { type: Sequelize.DATE }, // DATETIME NULL COMMENT '',
+    recorrencia: { type: Sequelize.STRING } // DATETIME NULL COMMENT '',
   },
   { tableName: 'Medicamento_Crianca' }
 )

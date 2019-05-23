@@ -37,14 +37,16 @@ module.exports = {
   set: async data => {
     let checkedData = checkSet(data.child, 'nome', 'data_nascimento', 'genero')
     if (checkedData.errMessage) return checkedData.errMessage
+    
+    let checkedBoundData = checkSet(data.bound, 'id_usuario')
+    if (checkedBoundData.errMessage) return checkedBoundData.errMessage
+    
     let payloadChild = checkedData.payload
     console.log({ child: payloadChild })
     console.log({ childData: data.child })
 
     let child = await childController.set(payloadChild)
 
-    let checkedBoundData = checkSet(data.bound, 'id_usuario')
-    if (checkedBoundData.errMessage) return checkedBoundData.errMessage
     let payloadBound = checkedBoundData.payload
     payloadBound.id_crianca = child.id
     bound = await boundController.set(payloadBound)

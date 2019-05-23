@@ -12,14 +12,14 @@ const user = db.define(
     // tipo: { type: Sequelize.STRING },
     // data_inicio: { type: Sequelize.DATE },
     // data_fim: { type: Sequelize.DATE },
-    // intervalo_horas: { type: Sequelize.DECIMAL },
-    // intervalo_dias: { type: Sequelize.DECIMAL },
-    // intervalo_meses: { type: Sequelize.DECIMAL },
-    // intervalo_anos: { type: Sequelize.DECIMAL },
+    intervalo_horas: { type: Sequelize.DECIMAL },
+    intervalo_dias: { type: Sequelize.DECIMAL },
+    intervalo_meses: { type: Sequelize.DECIMAL },
+    intervalo_anos: { type: Sequelize.DECIMAL },
     titulo: { type: Sequelize.STRING },
     texto: { type: Sequelize.STRING },
-    // dia_semana: { type: Sequelize.INTEGER },
-    // dia_mes: { type: Sequelize.TINYINT },
+    dia_semana: { type: Sequelize.INTEGER },
+    dia_mes: { type: Sequelize.TINYINT },
     // ano: { type: Sequelize.INTEGER },
     dia: { type: Sequelize.DataTypes.DATEONLY },
     hora: { type: Sequelize.STRING },
@@ -48,7 +48,15 @@ const user = db.define(
         key: 'id'
       }
     },
-    id_vacina: {
+    id_vacina_crianca: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+      references: {
+        model: dose,
+        key: 'id'
+      }
+    },
+    id_medicamento_vacina: {
       type: Sequelize.INTEGER,
       allowNull: true,
       references: {
