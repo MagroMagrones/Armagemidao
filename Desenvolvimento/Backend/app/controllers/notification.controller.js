@@ -53,10 +53,10 @@ module.exports = {
 
     await db
       .query(
-        `SELECT Notificacao.titulo, Notificacao.texto, Notificacao.id_dose,
+        `SELECT Notificacao.titulo, Notificacao.texto, Notificacao_.id_medicamento_crianca
         Notificacao_Subscription.id_usuario, Notificacao_Subscription.endpoint, Notificacao_Subscription.expirationTime, Notificacao_Subscription.p256dh, Notificacao_Subscription.auth
         FROM Notificacao
-        JOIN  Medicamento_Crianca on Notificacao.id_dose = Medicamento_Crianca.id
+        JOIN  Medicamento_Crianca on Notificacao.id_medicamento_crianca = Medicamento_Crianca.id
         JOIN Vinculo ON Medicamento_Crianca.id_crianca = Vinculo.id_crianca
         JOIN Notificacao_Subscription ON Notificacao_Subscription.id_usuario = Vinculo.id_usuario
         WHERE dia =:dia AND hora = :hora;`,
@@ -71,10 +71,10 @@ module.exports = {
 
     await db
       .query(
-        `SELECT Notificacao.titulo, Notificacao.texto, Notificacao.id_vacina,
+        `SELECT Notificacao.titulo, Notificacao.texto, Notificacao.id_vacina_crianca,
         Notificacao_Subscription.id_usuario, Notificacao_Subscription.endpoint, Notificacao_Subscription.expirationTime, Notificacao_Subscription.p256dh, Notificacao_Subscription.auth
         FROM Notificacao
-        JOIN  Vacina_Crianca on Notificacao.id_vacina = Vacina_Crianca.id
+        JOIN  Vacina_Crianca on Notificacao.id_vacina_crianca = Vacina_Crianca.id
         JOIN Vinculo ON Vacina_Crianca.id_crianca = Vinculo.id_crianca
         JOIN Notificacao_Subscription ON Notificacao_Subscription.id_usuario = Vinculo.id_usuario
         WHERE dia =:dia AND hora = :hora;`,

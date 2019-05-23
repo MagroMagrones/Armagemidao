@@ -40,14 +40,6 @@ const user = db.define(
         key: 'id'
       }
     },
-    id_dose: {
-      type: Sequelize.INTEGER,
-      allowNull: true,
-      references: {
-        model: dose,
-        key: 'id'
-      }
-    },
     id_vacina_crianca: {
       type: Sequelize.INTEGER,
       allowNull: true,
@@ -56,7 +48,7 @@ const user = db.define(
         key: 'id'
       }
     },
-    id_medicamento_vacina: {
+    id_medicamento_crianca: {
       type: Sequelize.INTEGER,
       allowNull: true,
       references: {
