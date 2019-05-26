@@ -3,6 +3,6 @@
   [title]="'Medicamentos'"
   [subtitle]="'Cadastro de medicamentos no sistema bb-watch'"
 >
-  <app-register-medicine></app-register-medicine>
-  <app-list-medicines></app-list-medicines>
+  <app-register-medicine (loadList)="loadList()" [medicine]="medicine"></app-register-medicine>
+  <app-list-medicines (loadList)="loadList()" (editMedicine)="edit($event)" [medicines]="medicines"></app-list-medicines>
 </app-main>

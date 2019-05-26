@@ -3,19 +3,23 @@
     <tr>
       <th>Código</th>
       <th>Nome</th>
+      <th>Tipo</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let medicine of medicines">
-      <td>{{ medicine.codigo }}</td>
-      <td>{{ medicine.nome }}</td>
+      <td>{{ medicine.id_medicamento_registro }}</td>
+      <td>{{ medicine.nome_comercial }}</td>
+      <td>{{ medicine.tipo }}</td>
       <td>
-        <button
-          class="btn btn-danger ml-2"
-          (click)="this.removeMedicine(medicine)"
-        >
-          <i class="fa fa-trash"></i>
-        </button>
+          <button class="btn btn-warning" (click)="edit(medicine)">
+            <i class="fas fa-pen"></i>
+          </button>
+
+          <button class="btn btn-danger ml-2" (click)="remove(medicine)">
+            <i class="fa fa-trash"></i>
+          </button>
       </td>
     </tr>
   </tbody>

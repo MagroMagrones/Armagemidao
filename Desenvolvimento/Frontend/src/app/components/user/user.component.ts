@@ -50,12 +50,12 @@ export class UserComponent implements OnInit {
     }
   }
 
-  clear = () => {
+  clear() {
     this.form.resetForm()
     this.user = new User()
   }
 
-  load = (user: User) => this.user = user
+  edit = (user: User) => this.user = user
 
   remove(user: User) {
     if(!user || !user.id)
