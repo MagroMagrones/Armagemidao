@@ -6,15 +6,15 @@ const tutorial = db.define(
   'Tutorial',
   {
     titulo: { type: Sequelize.STRING },
-    instrucoes: { type: Sequelize.STRING },
-    id_usuario: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-      references: {
-        model: user,
-        key: 'id'
-      }
-    }
+    instrucoes: { type: Sequelize.STRING }
+    // id_usuario: {
+    //   type: Sequelize.INTEGER,
+    //   allowNull: false,
+    //   references: {
+    //     model: user,
+    //     key: 'id'
+    //   }
+    // }
   },
   { tableName: 'Tutorial' }
 )
