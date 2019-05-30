@@ -9,7 +9,7 @@ const exam = db.define(
     url_resultado_digitalizado: { type: Sequelize.STRING },
     realizado: { type: Sequelize.TINYINT },
     data_pedido: { type: Sequelize.DATE },
-    data_reaizado: { type: Sequelize.DATE },
+    data_realizacao: { type: Sequelize.DATE },
     observacao: { type: Sequelize.STRING },
     id_crianca: {
       type: Sequelize.INTEGER,
