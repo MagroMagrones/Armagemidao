@@ -23,7 +23,7 @@ module.exports = {
         JOIN  Exame on Notificacao.id_exame = Exame.id
         JOIN Vinculo ON Exame.id_crianca = Vinculo.id_crianca
         JOIN Notificacao_Subscription ON Notificacao_Subscription.id_usuario = Vinculo.id_usuario
-        WHERE dia =:dia AND hora = :hora;`,
+        WHERE dia =:dia AND hora =:hora;`,
         {
           replacements: { dia: payload.dia, hora: payload.hora },
           type: db.QueryTypes.SELECT
@@ -41,7 +41,7 @@ module.exports = {
         JOIN  Consulta on Notificacao.id_consulta = Consulta.id
         JOIN Vinculo ON Consulta.id_crianca = Vinculo.id_crianca
         JOIN Notificacao_Subscription ON Notificacao_Subscription.id_usuario = Vinculo.id_usuario
-        WHERE dia =:dia AND hora = :hora;`,
+        WHERE dia =:dia AND hora =:hora;`,
         {
           replacements: { dia: payload.dia, hora: payload.hora },
           type: db.QueryTypes.SELECT
@@ -53,13 +53,13 @@ module.exports = {
 
     await db
       .query(
-        `SELECT Notificacao.titulo, Notificacao.texto, Notificacao_.id_medicamento_crianca
+        `SELECT Notificacao.titulo, Notificacao.texto, Notificacao.id_medicamento_crianca,
         Notificacao_Subscription.id_usuario, Notificacao_Subscription.endpoint, Notificacao_Subscription.expirationTime, Notificacao_Subscription.p256dh, Notificacao_Subscription.auth
         FROM Notificacao
         JOIN  Medicamento_Crianca on Notificacao.id_medicamento_crianca = Medicamento_Crianca.id
         JOIN Vinculo ON Medicamento_Crianca.id_crianca = Vinculo.id_crianca
         JOIN Notificacao_Subscription ON Notificacao_Subscription.id_usuario = Vinculo.id_usuario
-        WHERE dia =:dia AND hora = :hora;`,
+        WHERE dia =:dia AND hora =:hora;`,
         {
           replacements: { dia: payload.dia, hora: payload.hora },
           type: db.QueryTypes.SELECT
@@ -77,7 +77,7 @@ module.exports = {
         JOIN  Vacina_Crianca on Notificacao.id_vacina_crianca = Vacina_Crianca.id
         JOIN Vinculo ON Vacina_Crianca.id_crianca = Vinculo.id_crianca
         JOIN Notificacao_Subscription ON Notificacao_Subscription.id_usuario = Vinculo.id_usuario
-        WHERE dia =:dia AND hora = :hora;`,
+        WHERE dia =:dia AND hora =:hora;`,
         {
           replacements: { dia: payload.dia, hora: payload.hora },
           type: db.QueryTypes.SELECT
