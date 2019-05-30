@@ -5,7 +5,7 @@ module.exports = {
     const appointments = await appointmentModel
       .findAll()
       .then()
-      .catch(err => console.log(err))
+      .catch(err => console.log("appointments",err))
 
     if (appointments.length > 0) return appointments
     else return []
