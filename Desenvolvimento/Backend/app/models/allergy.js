@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const db = require('../../config/db')
 
 const allergy = db.define(
-  'Alergia',
+  'Historico_Alergia',
   {
     id_crianca: {
       type: Sequelize.INTEGER,
@@ -12,10 +12,13 @@ const allergy = db.define(
         key: 'id'
       }
     },
-    tipo: { type: Sequelize.STRING }, // VARCHAR(45) NOT NULL COMMENT '',
-    data: {type: Sequelize.DATE}
+    alergia: { type: Sequelize.STRING }, // VARCHAR(45) NOT NULL COMMENT '',
+	intensidade: { type: Sequelize.STRING },
+    data_deteccao: {type: Sequelize.DATE },
+	recorrente: { type: Sequelize.TINYINT(1) }
+	
   },
-  { tableName: 'Medicamento' }
+  { tableName: 'Historico_Alergia' }
 )
 
 module.exports = allergy

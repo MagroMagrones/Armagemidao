@@ -6,7 +6,7 @@ const appointment = require('./appointment.model')
 const dose = require('./medicineChild.model')
 const exam = require('./exam.model')
 
-const user = db.define(
+const notification = db.define(
   'Notificacao',
   {
     // tipo: { type: Sequelize.STRING },
@@ -55,9 +55,17 @@ const user = db.define(
         model: vaccine,
         key: 'id'
       }
-    }
+    },
+	  id_usuario: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+      references: {
+        model: user,
+        key: 'id'
+      }
+    }	
   },
   { tableName: 'Notificacao' }
 )
 
-module.exports = user
+module.exports = notification

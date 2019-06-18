@@ -14,8 +14,16 @@ const appointment = db.define(
         model: child,
         key: 'id'
       }
+    }, 
+	id_pediatra: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: doctor,
+        key: 'id'
+      }
     }
-  },
+  }
   { tableName: 'Consulta' }
 )
 

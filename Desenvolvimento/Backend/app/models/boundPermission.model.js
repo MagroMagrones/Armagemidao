@@ -1,30 +1,38 @@
 const Sequelize = require('sequelize')
 const db = require('../../config/db')
-const bound = require('./bound.model')
-const permission = require('./permission.model')
+const user = require('./user.model')
+const child = require('./child.model')
 
 const boundPermission = db.define(
-  'Permissao_Vinculo',
+  'Vinculo_Permissao',
   {
-    id_vinculo: {
+    id_usuario: {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
-        model: bound,
+        model: user,
         key: 'id'
       }
-    }, // INT NOT NULL COMMENT '',
-    id_permissao: {
+    },
+    id_crianca: {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
-        model: permission,
+        model: child,
         key: 'id'
       }
-    }, // INT NOT NULL COMMENT '',
-    tipo: { type: Sequelize.STRING } // VARCHAR(45) NULL COMMENT '',
+    }, 
+	
+	tipo: { type: Sequelize.STRING },
+	gerencia_crianca: { type: Sequelize.TINYINT(1) }, 
+	gerencia_medicamento: { type: Sequelize.TINYINT(1) },
+	gerencia_vacina: { type: Sequelize.TINYINT(1) },
+	gerencia_consulta: { type: Sequelize.TINYINT(1) },
+	gerencia_exame: { type: Sequelize.TINYINT(1) },
+	gerencia_sintoma: { type: Sequelize.TINYINT(1) }
+	
   },
-  { tableName: 'Permissao_Vinculo' }
+  { tableName: 'Vinculo_Permissao' }
 )
 
 module.exports = boundPermission
