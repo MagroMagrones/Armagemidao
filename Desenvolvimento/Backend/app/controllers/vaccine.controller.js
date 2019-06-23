@@ -18,5 +18,20 @@ module.exports = {
   },
   update: async (id, data) => {
     return 'not implemented yet'
+  },
+  delete: async data => {
+    const resDeleteVaccine = await vaccineModel
+      .destroy({ where: { id: data.id } })
+      .then()
+      .catch(err => {
+        console.log(err)
+      })
+    console.log({ resDeleteVaccine })
+
+    if (!resDeleteVaccine) return { err: 'Falha ao deletar vacina' }
+    else
+      return {
+        message: 'vacina deletada com sucesso'
+      }
   }
 }

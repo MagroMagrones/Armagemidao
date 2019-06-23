@@ -17,5 +17,11 @@ export class ListVaccinesComponent implements OnInit {
       this.vaccines = res
     })
   }
-  remove(vaccine) {}
+  remove(vaccine) {
+    console.log('deletando vacina...')
+
+    this.vaccineService.deletevaccine(vaccine).then((res: any) => {
+      console.log(res)
+    })
+  }
 }

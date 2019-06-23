@@ -5,6 +5,11 @@ const user = require('./user.model')
 const tutorial = db.define(
   'Tutorial',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     titulo: { type: Sequelize.STRING },
     instrucoes: { type: Sequelize.STRING }
     // id_usuario: {

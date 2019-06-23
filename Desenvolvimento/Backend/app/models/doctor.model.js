@@ -5,6 +5,11 @@ const user = require('./user.model')
 const doctor = db.define(
   'Pediatra',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     id_usuario: {
       type: Sequelize.INTEGER,
       allowNull: false,

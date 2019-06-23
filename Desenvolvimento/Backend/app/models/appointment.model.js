@@ -5,6 +5,11 @@ const child = require('./child.model')
 const appointment = db.define(
   'Consulta',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     data_consulta: { type: Sequelize.DATE },
     retorno: { type: Sequelize.TINYINT(1) },
     id_crianca: {

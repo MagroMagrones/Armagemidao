@@ -12,5 +12,10 @@ module.exports = {
   },
   update: async data => {
     return 'not implemented yet'
+  },
+  delete: async data => {
+    if (!data.id) return { err: 'id required' }
+    let res = await vaccineController.delete(data)
+    return res
   }
 }

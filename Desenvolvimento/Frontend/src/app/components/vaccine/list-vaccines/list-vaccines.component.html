@@ -3,18 +3,19 @@
     <tr>
       <th>Idade:</th>
       <th>Nome:</th>
-      <th>Dose</th>
-      <th>Doenças previnidas</th>
+      <th>Dose multipla</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let vaccine of vaccines">
-      <td>{{ vaccine.age }}</td>
-      <td>{{ vaccine.name }}</td>
-      <td>{{ vaccine.dose }}</td>
-      <td>{{ vaccine.diseases }}</td>
       <td>
-        <button class="btn btn-danger ml-2" (click)="this.remove(vaccine)">
+        {{ vaccine.idade_inicio
+        }}{{ vaccine.idade_fim ? ' ~ ' + vaccine.idade_fim : '' }}
+      </td>
+      <td>{{ vaccine.nome }}</td>
+      <td>{{ vaccine.dose_multipla == 0 ? 'não' : 'sim' }}</td>
+      <td>
+        <button class="btn btn-danger ml-2" (click)="this.remove(vaccine.id)">
           <i class="fa fa-trash"></i>
         </button>
       </td>

@@ -17,4 +17,8 @@ module.exports = app => {
     console.log('\n[vaccine.routes.js] - put')
     res.send(await vaccineService.update(req.body))
   })
+  app.delete('/vaccine/:id', async (req, res) => {
+    console.log('\n[vaccine.routes.js] - delete')
+    res.send(await vaccineService.delete(req.params))
+  })
 }

@@ -9,6 +9,11 @@ const exam = require('./exam.model')
 const user = db.define(
   'Notificacao',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     // tipo: { type: Sequelize.STRING },
     // data_inicio: { type: Sequelize.DATE },
     // data_fim: { type: Sequelize.DATE },

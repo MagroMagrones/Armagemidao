@@ -6,6 +6,11 @@ const user = require('./user.model')
 const notSub = db.define(
   'NotificacaoSub',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     id_usuario: {
       type: Sequelize.INTEGER,
       allowNull: false,

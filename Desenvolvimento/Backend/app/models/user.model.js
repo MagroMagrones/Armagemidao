@@ -4,7 +4,12 @@ const db = require('../../config/db')
 const user = db.define(
   'Usuario',
   {
-    email: { type: Sequelize.STRING },
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    email: { type: Sequelize.STRING, unique: true },
     nome: { type: Sequelize.STRING },
     admin: { type: Sequelize.TINYINT(1), allowNull: false },
     ativo: { type: Sequelize.TINYINT(1), allowNull: false },

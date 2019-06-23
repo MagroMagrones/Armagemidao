@@ -6,6 +6,11 @@ const child = require('./child.model')
 const bound = db.define(
   'Vinculo',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     id_usuario: {
       type: Sequelize.INTEGER,
       allowNull: false,

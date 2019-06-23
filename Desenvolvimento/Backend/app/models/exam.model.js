@@ -5,6 +5,11 @@ const child = require('./child.model')
 const exam = db.define(
   'Exame',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     url_pedido_digitalizado: { type: Sequelize.STRING },
     url_resultado_digitalizado: { type: Sequelize.STRING },
     realizado: { type: Sequelize.TINYINT },
