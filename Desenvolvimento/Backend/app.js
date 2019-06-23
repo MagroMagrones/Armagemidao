@@ -13,7 +13,7 @@ const cronTasks = require('./app/helpers/cronTasks')
 db.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.')
-    // db.sync()
+    db.sync({ force: true })
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err)
@@ -23,7 +23,7 @@ if (process.argv[2] === 'production') {
 } else if (process.argv[2] === 'homolog') {
   console.log('\x1b[33m', '### HOMOLOG environment ###')
 }
-cronTasks.postNotificationToAll()
+// cronTasks.postNotificationToAll()
 app.listen(3210, () => {
   console.log('\x1b[0m', 'Backend escutando e enviando na porta 3210')
 })

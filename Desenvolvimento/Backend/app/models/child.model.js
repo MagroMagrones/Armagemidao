@@ -4,6 +4,11 @@ const db = require('../../config/db')
 const child = db.define(
   'Crianca',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     nome: { type: Sequelize.STRING, allowNull: false },
     data_nascimento: { type: Sequelize.DATE, allowNull: false },
     genero: { type: Sequelize.STRING, allowNull: false },

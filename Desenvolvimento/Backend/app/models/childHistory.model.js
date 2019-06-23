@@ -5,6 +5,11 @@ const child = require('./child.model')
 const childHistory = db.define(
   'Historico_crianca',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     id_crianca: {
       type: Sequelize.INTEGER,
       allowNull: false,

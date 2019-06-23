@@ -77,11 +77,11 @@ module.exports = {
       dia: day,
       hora: time
     })
-
+    console.log('\n\n\n\naki')
+    console.log(notifications[0].titulo)
     const promises = []
     notifications.map(res => {
       let notificationPayload = {
-        
         notification: {
           title: res.titulo,
           body: res.texto,

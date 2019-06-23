@@ -4,6 +4,11 @@ const db = require('../../config/db')
 const tutorialDenunciation = db.define(
   'Crianca',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     id_tutorial: {
       type: Sequelize.INTEGER,
       allowNull: false,

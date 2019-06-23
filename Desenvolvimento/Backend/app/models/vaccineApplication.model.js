@@ -6,6 +6,11 @@ const vaccine = require('./vaccine.model')
 const vaccineApplication = db.define(
   'Vacina_Crianca',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     id_vacina: {
       type: Sequelize.INTEGER,
       allowNull: false,

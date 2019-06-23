@@ -6,6 +6,11 @@ const medicine = require('./medicine.model')
 const medicine_child = db.define(
   'Medicamento_Crianca',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     id_medicamento: {
       type: Sequelize.INTEGER,
       allowNull: false,

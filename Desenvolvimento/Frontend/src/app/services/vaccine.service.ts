@@ -66,9 +66,9 @@ export class VaccineService {
       )
     })
   }
-  deletevaccine(data) {
+  deletevaccine(id) {
     return new Promise((resolve, reject) => {
-      this.http.delete(this.url, data).subscribe(
+      this.http.delete(this.url + '/' + id).subscribe(
         res => {
           console.log({ vaccines: res })
 

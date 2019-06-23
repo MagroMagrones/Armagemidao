@@ -6,6 +6,11 @@ const permission = require('./permission.model')
 const boundPermission = db.define(
   'Permissao_Vinculo',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     id_vinculo: {
       type: Sequelize.INTEGER,
       allowNull: false,

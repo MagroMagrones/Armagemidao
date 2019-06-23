@@ -4,6 +4,11 @@ const db = require('../../config/db')
 const vaccine = db.define(
   'Vacina',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     nome: { type: Sequelize.STRING },
     idade_inicio: { type: Sequelize.STRING },
     idade_fim: { type: Sequelize.STRING },
